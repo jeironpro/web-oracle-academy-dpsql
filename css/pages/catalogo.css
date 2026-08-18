@@ -1,0 +1,55 @@
+/* Índice del curso: secciones por tema, con número ordinal y hairline. */
+.indice {
+  max-width: var(--measure);
+  margin: var(--space-2xl) auto 0;
+  padding-inline: var(--space-lg);
+}
+
+.tema {
+  margin-bottom: var(--space-2xl);
+}
+
+.tema__cabecera {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.tema__numero {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.tema__titulo {
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
+.tema__conteo {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-neutral);
+  white-space: nowrap;
+}
+
+.tema__lista {
+  list-style: none;
+  padding: 0;
+  border-top: var(--rule-hair);
+}
+
+@media (max-width: 480px) {
+  .tema__cabecera {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .tema__conteo {
+    margin-left: 0;
+    width: 100%;
+  }
+}
