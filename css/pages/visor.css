@@ -1,4 +1,4 @@
-/* Barra superior del visor: migas de pan + descarga. */
+/* Barra superior del visor: volver + migas a la izquierda, descarga a la derecha. */
 .visor-barra {
   display: flex;
   flex-wrap: wrap;
@@ -10,6 +10,19 @@
   background: var(--color-paper-2);
 }
 
+.visor-barra__izquierda {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.visor-barra__volver {
+  flex-shrink: 0;
+}
+
 .visor-barra__migas {
   display: flex;
   align-items: center;
@@ -17,6 +30,7 @@
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   min-width: 0;
+  flex: 1;
 }
 
 .visor-barra__enlace {

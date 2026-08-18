@@ -26,7 +26,14 @@
 
     <header class="barra-superior">
       <a class="barra-superior__marca-enlace" href="index.html">
-        <span class="marca__punto" aria-hidden="true"></span>
+        <img
+          class="marca__logo"
+          src="favicon.svg"
+          alt=""
+          width="28"
+          height="28"
+          aria-hidden="true"
+        />
         <span class="marca__texto">Oracle Academy · DPSQL 47–50</span>
       </a>
       <div class="barra-superior__busqueda">
@@ -40,6 +47,7 @@
             placeholder="Buscar lección, práctica o tema…"
             autocomplete="off"
           />
+          <kbd class="busqueda__tecla" id="tecla-busqueda" aria-hidden="true">Ctrl K</kbd>
         </div>
       </div>
       <p class="barra-superior__contador" id="contador-global" role="status" aria-live="polite"></p>
@@ -49,29 +57,14 @@
       <aside class="panel" aria-label="Temas del curso">
         <p class="panel__cabecera eyebrow">Temario</p>
         <nav class="panel__nav" id="panel-navegacion" aria-label="Navegación por temas"></nav>
-        <p class="panel__pie">21 temas · 137 archivos · Oracle Academy en español</p>
       </aside>
 
       <main class="contenido" id="contenido">
         <div id="vista-contenido"></div>
 
         <footer class="colofon">
-          <p>oracle-academy-dpsql · MIT · jeironpro · 2026</p>
-          <nav class="colofon__enlaces" aria-label="Enlaces del pie">
-            <a
-              href="https://github.com/jeironpro/oracle-academy-dpsql"
-              target="_blank"
-              rel="noopener"
-              >Repositorio</a
-            >
-            <a
-              href="https://www.oracle.com/database/technologies/appdev/datamodeler.html"
-              target="_blank"
-              rel="noopener"
-              >Oracle Data Modeler</a
-            >
-            <a href="https://academy.oracle.com" target="_blank" rel="noopener">Oracle Academy</a>
-          </nav>
+          <p>oracle-academy-dpsql</p>
+          <p>jeironpro · 2026</p>
         </footer>
       </main>
     </div>
