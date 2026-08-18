@@ -12,13 +12,13 @@ referencian tokens por nombre, nunca valores sueltos.
 
 El sistema unifica las skills de diseño instaladas globalmente:
 
-| Skill | Aporte |
-| --- | --- |
-| **hallmark** | Sistema autoritativo: tokens OKLCH, macroestructura *Index-First*, disciplina de tipografía 2+1, slop test, estampado de CSS. |
-| **frontend-design** | Jerarquía en escala de grises primero, sistemas antes que detalles, pulido al final, contexto de audiencia/uso/tono. |
-| **impeccable** | Craft floor y modo *Read*: la estructura prioriza la comprensión; la marca vive en los detalles precisos. |
-| **hyperframes / motion-graphics** | Movimiento contenido: entradas orquestadas, sin rebotes, `prefers-reduced-motion` respetado. |
-| **dicresoft (DESIGN.md)** | Libro de estilo obligatorio antes de implementar, iconos Material Symbols, sin emojis en la UI. |
+| Skill                             | Aporte                                                                                                                        |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **hallmark**                      | Sistema autoritativo: tokens OKLCH, macroestructura _Index-First_, disciplina de tipografía 2+1, slop test, estampado de CSS. |
+| **frontend-design**               | Jerarquía en escala de grises primero, sistemas antes que detalles, pulido al final, contexto de audiencia/uso/tono.          |
+| **impeccable**                    | Craft floor y modo _Read_: la estructura prioriza la comprensión; la marca vive en los detalles precisos.                     |
+| **hyperframes / motion-graphics** | Movimiento contenido: entradas orquestadas, sin rebotes, `prefers-reduced-motion` respetado.                                  |
+| **dicresoft (DESIGN.md)**         | Libro de estilo obligatorio antes de implementar, iconos Material Symbols, sin emojis en la UI.                               |
 
 ## Paleta
 
@@ -26,20 +26,20 @@ Tema custom dentro del cluster editorial: **papel cálido + acento óxido**.
 Hue ancla ≈ 60 (ámbar). Todas las superficies y neutros llevan un rastro de
 croma cálido; nada de gris plano ni negro puro.
 
-| Token | Valor (OKLCH) | Uso |
-| --- | --- | --- |
-| `--color-paper` | `oklch(97% 0.008 60)` | Fondo base |
+| Token             | Valor (OKLCH)         | Uso                                           |
+| ----------------- | --------------------- | --------------------------------------------- |
+| `--color-paper`   | `oklch(97% 0.008 60)` | Fondo base                                    |
 | `--color-paper-2` | `oklch(94% 0.010 60)` | Superficie elevada (masthead, filas alternas) |
-| `--color-paper-3` | `oklch(90% 0.012 60)` | Superficies hover, inputs |
-| `--color-rule` | `oklch(84% 0.010 60)` | Hairlines y bordes |
-| `--color-neutral` | `oklch(58% 0.008 60)` | Texto secundario, iconos inactivos |
-| `--color-muted` | `oklch(42% 0.010 55)` | Texto atenuado, captions |
-| `--color-ink` | `oklch(20% 0.012 50)` | Texto principal |
-| `--color-accent` | `oklch(52% 0.14 45)` | Enlaces, activo, foco, subrayados |
-| `--color-focus` | `oklch(60% 0.18 45)` | Anillo de foco visible |
-| `--color-success` | `oklch(55% 0.12 150)` | Estados de éxito |
-| `--color-error` | `oklch(55% 0.16 25)` | Estados de error |
-| `--color-warning` | `oklch(65% 0.13 75)` | Estados de aviso |
+| `--color-paper-3` | `oklch(90% 0.012 60)` | Superficies hover, inputs                     |
+| `--color-rule`    | `oklch(84% 0.010 60)` | Hairlines y bordes                            |
+| `--color-neutral` | `oklch(58% 0.008 60)` | Texto secundario, iconos inactivos            |
+| `--color-muted`   | `oklch(42% 0.010 55)` | Texto atenuado, captions                      |
+| `--color-ink`     | `oklch(20% 0.012 50)` | Texto principal                               |
+| `--color-accent`  | `oklch(52% 0.14 45)`  | Enlaces, activo, foco, subrayados             |
+| `--color-focus`   | `oklch(60% 0.18 45)`  | Anillo de foco visible                        |
+| `--color-success` | `oklch(55% 0.12 150)` | Estados de éxito                              |
+| `--color-error`   | `oklch(55% 0.16 25)`  | Estados de error                              |
+| `--color-warning` | `oklch(65% 0.13 75)`  | Estados de aviso                              |
 
 Reglas de uso del acento: ocupa **≤ 3 %** de cualquier viewport; se usa como
 subrayador (enlaces, activo, foco), nunca como fondo de bloques grandes.
@@ -49,11 +49,11 @@ Contraste mínimo: cuerpo 4.5:1, texto grande 3:1, bordes de UI 3:1.
 
 Pareja 2+1 (máximo tres familias):
 
-| Rol | Familia | Fuente |
-| --- | --- | --- |
-| Display | `--font-display` | **Newsreader** (Google Fonts, serif romana, ejes ópticos) |
-| Cuerpo | `--font-body` | **IBM Plex Sans** (Google Fonts, sans técnica legible) |
-| Outlier | `--font-mono` | **IBM Plex Mono** (Google Fonts) — solo rutas, metadatos, etiquetas técnicas y cifras tabulares |
+| Rol     | Familia          | Fuente                                                                                          |
+| ------- | ---------------- | ----------------------------------------------------------------------------------------------- |
+| Display | `--font-display` | **Newsreader** (Google Fonts, serif romana, ejes ópticos)                                       |
+| Cuerpo  | `--font-body`    | **IBM Plex Sans** (Google Fonts, sans técnica legible)                                          |
+| Outlier | `--font-mono`    | **IBM Plex Mono** (Google Fonts) — solo rutas, metadatos, etiquetas técnicas y cifras tabulares |
 
 Escala tipográfica 1.25 (tercera mayor), base 16 px. Display con
 `letter-spacing: -0.02em` a `-0.04em`; etiquetas en mayúsculas con
@@ -77,6 +77,7 @@ Escala de 4 pt con nombres semánticos:
 ## Componentes base
 
 ### Botón
+
 Estados: default · hover · `:focus-visible` · `:active` · disabled ·
 loading · error · success. Botón primario: fondo `--color-ink`, texto
 `--color-paper`, hover `--color-muted`. Botón secundario: borde hairline
@@ -84,11 +85,13 @@ loading · error · success. Botón primario: fondo `--color-ink`, texto
 Sin `!important` salvo terceros. Focus ring ≥ 3:1, instantáneo (nunca animado).
 
 ### Campo de búsqueda
+
 `input` asociado a su `label` (`for`/`id`). Borde hairline, fondo
 `--color-paper`, hover `--color-paper-3`, foco con anillo `--color-focus`.
 Mensajes de estado siempre con `role="status"` o `aria-live`.
 
 ### Filas de archivo (índice)
+
 Estructura en hairlines: fila completa clickeable con enlace real (nunca un
 `div` con `role`), nombre en `--color-ink`, metadatos (tipo, tamaño, lección)
 en `--font-mono` y `--color-muted`, hover con fondo `--color-paper-2` y
@@ -96,7 +99,7 @@ subrayado de acento en el nombre. Descarga siempre accesible aparte del visor.
 
 ## Iconografía
 
-- **Material Symbols** (Google), estilo *Outlined*, como estándar
+- **Material Symbols** (Google), estilo _Outlined_, como estándar
   (regla de dicresoft `DESIGN.md` / `GENERALS_RULES.md`).
 - Sin emojis en la UI ni en el código.
 - Iconos usados: `search`, `download`, `open_in_new`, `chevron_left`,
