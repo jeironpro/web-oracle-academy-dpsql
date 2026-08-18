@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Página no encontrada · Oracle Academy</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <style>
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        padding: var(--space-xl);
+      }
+      .no-encontrada {
+        text-align: center;
+        max-width: 42ch;
+      }
+      .no-encontrada__codigo {
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-muted);
+      }
+      .no-encontrada__titulo {
+        margin-top: var(--space-sm);
+        font-size: var(--text-3xl);
+      }
+      .no-encontrada__texto {
+        margin-top: var(--space-md);
+        color: var(--color-muted);
+      }
+      .no-encontrada__enlace {
+        display: inline-block;
+        margin-top: var(--space-lg);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="no-encontrada">
+      <p class="no-encontrada__codigo">Error 404</p>
+      <h1 class="no-encontrada__titulo">Página no encontrada</h1>
+      <p class="no-encontrada__texto">
+        El documento que buscas no existe o se movió. Vuelve al índice del curso.
+      </p>
+      <a class="no-encontrada__enlace" href="index.html">Volver al índice</a>
+    </main>
+  </body>
+</html>
