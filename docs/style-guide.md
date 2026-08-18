@@ -1,121 +1,113 @@
 # Libro de estilo — Oracle Academy DPSQL
 
-Sistema de diseño unificado del sitio web estático del curso
-«Programación de Base de Datos SQL» (Oracle Academy, DPSQL 47–50).
+Sistema de diseño del sitio web del curso «Programación de Base de Datos SQL»
+(Oracle Academy, DPSQL 47–50). Unifica las skills de diseño instaladas
+globalmente siguiendo el **tema Hum** de hallmark, aplicado como aplicación
+a pantalla completa con panel lateral (referencia: ejemplo Hum-07 de
+usehallmark.com).
 
-Este documento es la **única fuente de verdad** de valores de diseño
-(colores, tipografía, espaciados, componentes). La implementación técnica
-vive en `tokens.css` (custom properties) y en los CSS de página, que siempre
-referencian tokens por nombre, nunca valores sueltos.
+Este documento es la **única fuente de verdad** de valores de diseño. La
+implementación vive en `tokens.css` y en los CSS de página, que siempre
+referencian tokens por nombre.
 
 ## Skills de diseño aplicadas
 
-El sistema unifica las skills de diseño instaladas globalmente:
-
-| Skill                             | Aporte                                                                                                                        |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **hallmark**                      | Sistema autoritativo: tokens OKLCH, macroestructura _Index-First_, disciplina de tipografía 2+1, slop test, estampado de CSS. |
-| **frontend-design**               | Jerarquía en escala de grises primero, sistemas antes que detalles, pulido al final, contexto de audiencia/uso/tono.          |
-| **impeccable**                    | Craft floor y modo _Read_: la estructura prioriza la comprensión; la marca vive en los detalles precisos.                     |
-| **hyperframes / motion-graphics** | Movimiento contenido: entradas orquestadas, sin rebotes, `prefers-reduced-motion` respetado.                                  |
-| **dicresoft (DESIGN.md)**         | Libro de estilo obligatorio antes de implementar, iconos Material Symbols, sin emojis en la UI.                               |
+| Skill                             | Aporte                                                                                                                                |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| **hallmark**                      | Sistema autoritativo: tema Hum (paleta multiacento, sans redondeada, sistema de botones push, siete movimientos de marca, slop test). |
+| **frontend-design**               | Jerarquía primero, sistemas antes que detalles, pulido al final, contexto de audiencia/uso/tono.                                      |
+| **impeccable**                    | Craft floor y modo _Operate_: shell de aplicación escaneable y consistente, con la marca en los detalles.                             |
+| **hyperframes / motion-graphics** | Movimiento contenido: presión del botón, elevación de tarjetas, pulso del punto de carácter, `prefers-reduced-motion` respetado.      |
+| **dicresoft (DESIGN.md)**         | Libro de estilo obligatorio, Material Symbols, sin emojis en la UI.                                                                   |
 
 ## Paleta
 
-Tema custom dentro del cluster editorial: **papel cálido + acento óxido**.
-Hue ancla ≈ 60 (ámbar). Todas las superficies y neutros llevan un rastro de
-croma cálido; nada de gris plano ni negro puro.
+Tema **Hum**: papel crema con tinte de pera, tinta fría casi negra y tres
+acentos que no compiten porque cada uno tiene su propia superficie.
 
-| Token             | Valor (OKLCH)         | Uso                                           |
-| ----------------- | --------------------- | --------------------------------------------- |
-| `--color-paper`   | `oklch(97% 0.008 60)` | Fondo base                                    |
-| `--color-paper-2` | `oklch(94% 0.010 60)` | Superficie elevada (masthead, filas alternas) |
-| `--color-paper-3` | `oklch(90% 0.012 60)` | Superficies hover, inputs                     |
-| `--color-rule`    | `oklch(84% 0.010 60)` | Hairlines y bordes                            |
-| `--color-neutral` | `oklch(58% 0.008 60)` | Texto secundario, iconos inactivos            |
-| `--color-muted`   | `oklch(42% 0.010 55)` | Texto atenuado, captions                      |
-| `--color-ink`     | `oklch(20% 0.012 50)` | Texto principal                               |
-| `--color-accent`  | `oklch(52% 0.14 45)`  | Enlaces, activo, foco, subrayados             |
-| `--color-focus`   | `oklch(60% 0.18 45)`  | Anillo de foco visible                        |
-| `--color-success` | `oklch(55% 0.12 150)` | Estados de éxito                              |
-| `--color-error`   | `oklch(55% 0.16 25)`  | Estados de error                              |
-| `--color-warning` | `oklch(65% 0.13 75)`  | Estados de aviso                              |
+| Token                      | Valor (OKLCH)          | Uso                                                           |
+| -------------------------- | ---------------------- | ------------------------------------------------------------- |
+| `--color-paper`            | `oklch(97% 0.012 95)`  | Fondo base (crema; nunca blanco puro)                         |
+| `--color-paper-2`          | `oklch(94% 0.016 95)`  | Superficies elevadas (panel, chips, soft buttons)             |
+| `--color-paper-3`          | `oklch(91% 0.02 95)`   | Hover de superficies                                          |
+| `--color-ink`              | `oklch(20% 0.012 250)` | Texto (nunca negro puro)                                      |
+| `--color-accent` (pera)    | `oklch(86% 0.18 95)`   | Acción principal: item activo del panel, carácter, highlights |
+| `--color-accent-2` (cian)  | `oklch(66% 0.18 235)`  | Enlaces, tintes hover, chip de icono PDF                      |
+| `--color-accent-3` (coral) | `oklch(68% 0.24 18)`   | El único momento de alta energía: número grande del tema      |
+| `--color-mint`             | `oklch(80% 0.16 150)`  | Tipos ZIP, estados de éxito (ocasional)                       |
+| `--color-lavender`         | `oklch(74% 0.16 305)`  | Insignias externas (ocasional)                                |
 
-Reglas de uso del acento: ocupa **≤ 3 %** de cualquier viewport; se usa como
-subrayador (enlaces, activo, foco), nunca como fondo de bloques grandes.
-Contraste mínimo: cuerpo 4.5:1, texto grande 3:1, bordes de UI 3:1.
+**Regla de los tres acentos:** pera = acción principal, cian = enlaces y
+tintes, coral = un solo momento por página. Sin gradientes entre acentos.
+Sin serif en ningún lugar. Sin blanco puro ni negro puro.
 
 ## Tipografía
 
-Pareja 2+1 (máximo tres familias):
+Tres familias, todas redondeadas o técnicas; **no hay serif**:
 
-| Rol     | Familia          | Fuente                                                                                          |
-| ------- | ---------------- | ----------------------------------------------------------------------------------------------- |
-| Display | `--font-display` | **Newsreader** (Google Fonts, serif romana, ejes ópticos)                                       |
-| Cuerpo  | `--font-body`    | **IBM Plex Sans** (Google Fonts, sans técnica legible)                                          |
-| Outlier | `--font-mono`    | **IBM Plex Mono** (Google Fonts) — solo rutas, metadatos, etiquetas técnicas y cifras tabulares |
+| Rol              | Familia                         | Fuente       |
+| ---------------- | ------------------------------- | ------------ |
+| Display / cuerpo | **Plus Jakarta Sans** (400–700) | Google Fonts |
+| Mono / etiquetas | **JetBrains Mono** (400, 500)   | Google Fonts |
 
-Escala tipográfica 1.25 (tercera mayor), base 16 px. Display con
-`letter-spacing: -0.02em` a `-0.04em`; etiquetas en mayúsculas con
-`letter-spacing: 0.08em`. Body mínimo 16 px, line-height 1.5–1.65,
-medida 45–75 caracteres (`max-width: 65ch`). Sin encabezados en itálica
-(la itálica solo vive en énfasis del cuerpo).
+- Display 600, tracking `-0.025em`; body 400 con 500 para énfasis.
+- Mayúsculas reservadas para etiquetas mono (`eyebrow`, chips, metadatos).
+- Números grandes (`--text-bignum`) con cifras tabulares.
+- Sin itálicas en encabezados; el énfasis va por peso o color.
 
 ## Espaciados y grilla
 
-Escala de 4 pt con nombres semánticos:
-
-`--space-2xs: 0.25rem` · `--space-xs: 0.5rem` · `--space-sm: 0.75rem` ·
-`--space-md: 1rem` · `--space-lg: 1.5rem` · `--space-xl: 2rem` ·
-`--space-2xl: 3rem` · `--space-3xl: 4rem` · `--space-4xl: 6rem`
-
-- Mobile-first: estilos base para móvil, media queries `min-width` para ampliar.
-- Breakpoints: 480 px · 768 px · 1024 px · 1280 px.
-- Secciones principales separadas con `--space-3xl` mínimo.
-- Radios pequeños (papel, no vidrio): `--radius-sm: 2px`, `--radius-md: 4px`.
+- Escala de 4 pt con nombres semánticos (`--space-2xs` … `--space-4xl`).
+- Shell de aplicación: barra superior (64 px) + panel izquierdo (280 px) +
+  contenido; cada columna con scroll propio, `calc(100vh - barra)`.
+- Móvil (< 768 px): el panel colapsa a una franja horizontal desplazable.
+- Radios: tarjetas 20 px, píldoras 999 px, inputs 12 px (Hum es redondo).
 
 ## Componentes base
 
-### Botón
+### Sistema de botones (movimiento #1 de Hum)
 
-Estados: default · hover · `:focus-visible` · `:active` · disabled ·
-loading · error · success. Botón primario: fondo `--color-ink`, texto
-`--color-paper`, hover `--color-muted`. Botón secundario: borde hairline
-`--color-rule`, texto `--color-ink`, hover `--color-paper-3`.
-Sin `!important` salvo terceros. Focus ring ≥ 3:1, instantáneo (nunca animado).
+Base `.btn` (push) con `box-shadow: 0 4px 0 0 var(--btn-edge)` + sombra de
+suelo. Hover: sube 2 px y el borde crece a 6 px. `:active`: se hunde 3 px y
+el borde cae a 1 px (la presión es la respuesta). Variantes `--soft` y
+`--outline`; colores `--pear/--cyan/--coral/--mint/--lav/--ink`; tamaños
+`--sm/--lg`. Un solo botón push por momento principal.
 
-### Campo de búsqueda
+### Tarjetas de archivo (color-shift #3)
 
-`input` asociado a su `label` (`for`/`id`). Borde hairline, fondo
-`--color-paper`, hover `--color-paper-3`, foco con anillo `--color-focus`.
-Mensajes de estado siempre con `role="status"` o `aria-live`.
+Tarjeta con chip de icono coloreado por tipo (PDF cian, DOCX pera, ZIP
+mint), tinte de fondo al 8–14 %, elevación al hover (`translateY(-4px)` +
+sombra mayor + tinte que profundiza). Acción explícita «Descargar»;
+archivos externos LFS muestran insignia lavanda y enlace a GitHub.
 
-### Filas de archivo (índice)
+### Chips de filtro
 
-Estructura en hairlines: fila completa clickeable con enlace real (nunca un
-`div` con `role`), nombre en `--color-ink`, metadatos (tipo, tamaño, lección)
-en `--font-mono` y `--color-muted`, hover con fondo `--color-paper-2` y
-subrayado de acento en el nombre. Descarga siempre accesible aparte del visor.
+Píldoras con punto de color por tipo y `aria-pressed` para el estado activo
+(fondo tinta + texto papel).
+
+### Panel lateral
+
+Items de tema: número mono, título truncado, conteo en píldora. Item activo:
+fondo pera + borde inferior de color (`box-shadow: 0 3px 0`). Botones reales,
+no enlaces simulados.
 
 ## Iconografía
 
-- **Material Symbols** (Google), estilo _Outlined_, como estándar
-  (regla de dicresoft `DESIGN.md` / `GENERALS_RULES.md`).
-- Sin emojis en la UI ni en el código.
-- Iconos usados: `search`, `download`, `open_in_new`, `chevron_left`,
-  `chevron_right`, `description`, `folder`, `link` (enlace externo).
-
-## Accesibilidad
-
-- HTML semántico (`header`, `nav`, `main`, `section`, `article`, `footer`).
-- `<html lang="es">`, `meta charset`, `meta viewport`, `title` descriptivo.
-- Imágenes con `alt`; decorativas con `alt=""`.
-- Orden de tabulación lógico; foco visible en todos los interactivos.
-- `prefers-reduced-motion: reduce` → las transiciones colapsan a ≤ 150 ms
-  de opacidad.
+- **Material Symbols** (Google), estilo _Outlined_, como estándar de
+  dicresoft. Sin emojis en la UI ni en el código.
+- Iconos usados: `search`, `download`, `open_in_new`, `description`,
+  `folder_zip`, `chevron_left`, `chevron_right`.
 
 ## Movimiento
 
-- Animar solo `transform` y `opacity`, nunca propiedades de layout.
-- Easings nombrados: `--ease-out`, `--ease-in`, `--ease-in-out`.
-- Máximo tres microinteracciones por página. Entrada orquestada única.
+- Botón push: 140 ms hover / 70 ms active, `cubic-bezier(0.2, 0.7, 0.3, 1)`.
+- Tarjetas: elevación con `--ease-spring` (220 ms) al hover.
+- Punto de carácter (marca): pulso de 4 s en escala 1 → 1.08 → 1.
+- `prefers-reduced-motion: reduce`: todo colapsa a ≤ 150 ms de opacidad.
+
+## Accesibilidad
+
+- HTML semántico, `<html lang="es">`, foco visible en cian, salto al
+  contenido, `aria-pressed` en selecciones, `role="status"` + `aria-live`
+  en contadores, labels asociados (`for`/`id`) con clase `.sr-only` cuando
+  el campo es autoevidente.
