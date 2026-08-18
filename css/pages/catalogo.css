@@ -1,55 +1,200 @@
-/* Índice del curso: secciones por tema, con número ordinal y hairline. */
-.indice {
-  max-width: var(--measure);
-  margin: var(--space-2xl) auto 0;
-  padding-inline: var(--space-lg);
-}
-
-.tema {
-  margin-bottom: var(--space-2xl);
-}
-
-.tema__cabecera {
+/* Item del panel lateral: número mono + título + conteo. */
+.panel__item {
   display: flex;
-  align-items: baseline;
-  gap: var(--space-md);
-  margin-bottom: var(--space-sm);
-}
-
-.tema__numero {
-  font-family: var(--font-mono);
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  font-family: var(--font-body);
   font-size: var(--text-sm);
-  color: var(--color-accent);
-  font-variant-numeric: tabular-nums;
+  color: var(--color-ink-soft);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
 }
 
-.tema__titulo {
-  font-size: var(--text-xl);
-  font-weight: 600;
+.panel__item:hover {
+  background: var(--color-paper-3);
+  color: var(--color-ink);
 }
 
-.tema__conteo {
-  margin-left: auto;
+.panel__item:active {
+  transform: translateY(1px);
+}
+
+.panel__item[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  box-shadow: 0 3px 0 0 var(--color-accent-deep);
+}
+
+.panel__item[aria-pressed="true"] .panel__item-numero {
+  color: var(--color-ink);
+}
+
+.panel__item-numero {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-neutral);
+  font-weight: 500;
+  color: var(--color-muted);
+  width: 2.2em;
+  flex-shrink: 0;
+}
+
+.panel__item-titulo {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.tema__lista {
-  list-style: none;
-  padding: 0;
-  border-top: var(--rule-hair);
+.panel__item-conteo {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  background: var(--color-paper);
+  border-radius: var(--radius-pill);
+  padding: 0.1rem 0.5rem;
+  flex-shrink: 0;
 }
 
-@media (max-width: 480px) {
-  .tema__cabecera {
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-  }
+.panel__item[aria-pressed="true"] .panel__item-conteo {
+  background: var(--color-paper);
+  color: var(--color-muted);
+}
 
-  .tema__conteo {
-    margin-left: 0;
-    width: 100%;
+/* Cabecera de tema en la vista individual. */
+.vista-tema__cabecera {
+  margin-bottom: var(--space-xl);
+}
+
+.vista-tema__fila {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-lg);
+  margin-top: var(--space-xs);
+}
+
+/* El número grande en coral: único momento de alta energía por página. */
+.vista-tema__numero {
+  font-family: var(--font-display);
+  font-size: var(--text-bignum);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: var(--color-accent-3);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.vista-tema__titulo {
+  font-size: var(--text-display);
+}
+
+.vista-tema__conteo {
+  margin-top: var(--space-sm);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.vista-tema__herramientas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.vista-tema__contador {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  min-height: 1.2em;
+  margin-left: auto;
+}
+
+/* Vista "todos": secciones de tema con encabezado compacto. */
+.todos__tema {
+  margin-bottom: var(--space-2xl);
+}
+
+.todos__cabecera {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.todos__numero {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-accent-3);
+}
+
+.todos__titulo {
+  font-size: var(--text-xl);
+}
+
+.todos__conteo {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* Grilla de tarjetas. */
+.grilla {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .grilla {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+
+@media (min-width: 1200px) {
+  .grilla {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Estado vacío. */
+.vacio {
+  margin-top: var(--space-xl);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-card);
+  background: var(--color-paper-2);
+  text-align: center;
+}
+
+.vacio__titulo {
+  font-size: var(--text-lg);
+}
+
+.vacio__texto {
+  margin-top: var(--space-sm);
+  color: var(--color-muted);
+}
+
+/* Error de carga. */
+.error {
+  padding: var(--space-xl);
+  border-radius: var(--radius-card);
+  background: var(--color-paper-2);
+  color: var(--color-error);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
 }

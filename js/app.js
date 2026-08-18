@@ -1,21 +1,20 @@
 import { cargarManifesto } from "./services/manifesto.js";
-import { renderizarIndice } from "./modules/catalogo.js";
-import { filtrarManifesto } from "./modules/busqueda.js";
+import { renderizarPanel, renderizarVista } from "./modules/catalogo.js";
 import { vaciar } from "./utils/dom.js";
 
-const TIPO_TODOS = "todos";
+const VISTA_TODOS = "todos";
 const RETARDO_BUSQUEDA = 150; // ms de debounce al escribir
 
-const contenedorIndice = document.querySelector("#indice");
-const campoBusqueda = document.querySelector("#campo-busqueda");
-const botonesFiltro = [...document.querySelectorAll(".chip")];
-const contadorResultados = document.querySelector("#contador-resultados");
-const estadoVacio = document.querySelector("#estado-vacio");
-const resumenCurso = document.querySelector("#resumen-curso");
+const elementos = {
+  panel: document.querySelector("#panel-navegacion"),
+  contenido: document.querySelector("#vista-contenido"),
+  contadorGlobal: document.querySelector("#contador-global"),
+  campoBusqueda: document.querySelector("#campo-busqueda"),
+};
 
 let manifesto = null;
-let tipoSeleccionado = TIPO_TODOS;
 let temporizadorBusqueda = null;
+const estado = { vista: VISTA_TODOS, consulta: "", tipo: "todos" };
 
 async function inicializar() {
   try {
@@ -26,52 +25,84 @@ async function inicializar() {
   }
 
   const curso = manifesto.curso;
-  if (resumenCurso !== null) {
-    resumenCurso.textContent = `${curso.totalTemas} temas · ${curso.totalArchivos} archivos`;
+  if (elementos.contadorGlobal !== null) {
+    elementos.contadorGlobal.textContent = `${curso.totalArchivos} archivos · ${curso.totalTemas} temas`;
   }
-  document.title = `${curso.titulo} · Oracle Academy`;
-  aplicarFiltros();
+  leerVistaDesdeHash();
+  actualizarTitulo();
+  renderizar();
 
-  campoBusqueda?.addEventListener("input", () => {
+  window.addEventListener("hashchange", () => {
+    leerVistaDesdeHash();
+    actualizarTitulo();
+    renderizar();
+  });
+
+  elementos.campoBusqueda?.addEventListener("input", (evento) => {
+    estado.consulta = evento.target.value;
     if (temporizadorBusqueda !== null) {
       window.clearTimeout(temporizadorBusqueda);
     }
-    temporizadorBusqueda = window.setTimeout(aplicarFiltros, RETARDO_BUSQUEDA);
+    temporizadorBusqueda = window.setTimeout(renderizar, RETARDO_BUSQUEDA);
   });
+}
 
-  for (const boton of botonesFiltro) {
-    boton.addEventListener("click", () => {
-      tipoSeleccionado = boton.dataset.tipo ?? TIPO_TODOS;
-      for (const otro of botonesFiltro) {
-        otro.setAttribute("aria-pressed", String(otro === boton));
-      }
-      aplicarFiltros();
+/** Lee la vista desde el hash (#todos o #tema-<id>). */
+function leerVistaDesdeHash() {
+  const hash = window.location.hash.replace(/^#/, "");
+  if (hash === VISTA_TODOS || hash === "") {
+    estado.vista = VISTA_TODOS;
+    return;
+  }
+  const idTema = hash.replace(/^tema-/, "");
+  if (manifesto?.temas.some((tema) => tema.id === idTema)) {
+    estado.vista = idTema;
+  }
+}
+
+/** Selecciona una vista, actualiza el hash (entrada de historial) y renderiza. */
+function seleccionarVista(vista) {
+  estado.vista = vista;
+  const hash = vista === VISTA_TODOS ? VISTA_TODOS : `tema-${vista}`;
+  window.location.hash = hash;
+  actualizarTitulo();
+  renderizar();
+}
+
+function renderizar() {
+  if (manifesto === null) {
+    return;
+  }
+  renderizarPanel(elementos.panel, manifesto, estado.vista, seleccionarVista);
+  renderizarVista(elementos.contenido, manifesto, estado);
+
+  // Conexión de los chips de filtro renderizados en la vista.
+  const chips = [...elementos.contenido.querySelectorAll(".chip")];
+  for (const chip of chips) {
+    chip.addEventListener("click", () => {
+      estado.tipo = chip.dataset.tipo ?? "todos";
+      renderizar();
     });
   }
 }
 
-function aplicarFiltros() {
-  const consulta = campoBusqueda?.value ?? "";
-  const { temas, total } = filtrarManifesto(manifesto, consulta, tipoSeleccionado);
-  renderizarIndice(contenedorIndice, temas);
-
-  const hayResultados = temas.length > 0;
-  if (estadoVacio !== null) {
-    estadoVacio.hidden = hayResultados;
+function actualizarTitulo() {
+  if (manifesto === null) {
+    return;
   }
-  if (contadorResultados !== null) {
-    contadorResultados.textContent = hayResultados
-      ? `${total} ${total === 1 ? "archivo" : "archivos"} · ${temas.length} ${temas.length === 1 ? "tema" : "temas"}`
-      : "";
-  }
+  const tema = manifesto.temas.find((item) => item.id === estado.vista);
+  document.title =
+    tema === undefined
+      ? `${manifesto.curso.titulo} · Oracle Academy`
+      : `${tema.titulo} · ${manifesto.curso.titulo}`;
 }
 
 function mostrarError(mensaje) {
-  vaciar(contenedorIndice);
+  vaciar(elementos.contenido);
   const parrafo = document.createElement("p");
   parrafo.className = "error";
   parrafo.textContent = mensaje;
-  contenedorIndice.append(parrafo);
+  elementos.contenido.append(parrafo);
 }
 
 inicializar();

@@ -26,11 +26,11 @@
 }
 
 .visor-barra__enlace:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-2-deep);
 }
 
 .visor-barra__separador {
-  color: var(--color-rule);
+  color: var(--color-neutral);
 }
 
 .visor-barra__actual {
@@ -42,45 +42,7 @@
   flex-shrink: 0;
 }
 
-/* Botones (estado default/hover/focus/active/disabled). */
-.boton {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    background var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out);
-}
-
-.boton--secundario {
-  border: var(--rule-hair);
-  background: var(--color-paper);
-  color: var(--color-ink);
-}
-
-.boton--secundario:hover {
-  background: var(--color-paper-3);
-}
-
-.boton--secundario:active {
-  transform: translateY(1px);
-}
-
-.boton--secundario[disabled],
-.boton--secundario[aria-disabled="true"] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Encabezado del documento dentro del visor. */
+/* Encabezado del documento. */
 .visor {
   max-width: var(--measure);
   margin-inline: auto;
@@ -90,6 +52,7 @@
 .visor__etiqueta {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-muted);
@@ -112,12 +75,13 @@
 .visor__marco {
   position: relative;
   margin-top: var(--space-lg);
-  height: calc(100vh - 280px);
+  height: calc(100vh - 300px);
   min-height: 320px;
-  border: var(--rule-hair);
-  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-ink-soft);
+  border-radius: var(--radius-card);
   background: var(--color-paper-2);
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 .visor__pdf {
@@ -141,10 +105,10 @@
   gap: var(--space-sm);
   padding: var(--space-xl);
   text-align: center;
+  background: var(--color-paper-2);
 }
 
 .visor__fallo-titulo {
-  font-family: var(--font-display);
   font-size: var(--text-lg);
 }
 
@@ -180,16 +144,18 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--color-accent);
+  font-size: var(--text-sm);
+  color: var(--color-accent-2-deep);
   text-decoration: none;
+  border-radius: var(--radius-pill);
+  padding: var(--space-xs) var(--space-sm);
+  transition: background var(--dur-fast) var(--ease-out);
 }
 
 .visor-pie__enlace:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  background: var(--color-paper-2);
+  color: var(--color-ink);
 }
 
 .visor-pie__posicion {
@@ -205,6 +171,6 @@
   }
 
   .visor__marco {
-    height: calc(100vh - 320px);
+    height: calc(100vh - 340px);
   }
 }
