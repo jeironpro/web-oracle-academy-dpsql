@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jeironpro.github.io/oracle-academy-dpsql/sitemap.xml
