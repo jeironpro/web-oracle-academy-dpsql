@@ -86,14 +86,14 @@
 }
 
 .panel__cabecera {
-  padding: var(--space-md) var(--space-lg) var(--space-sm);
+  padding: var(--space-sm) var(--space-lg) var(--space-2xs);
 }
 
 .panel__nav {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
-  padding: var(--space-xs) var(--space-md) var(--space-lg);
+  gap: 0.375rem;
+  padding: var(--space-2xs) var(--space-md) var(--space-lg);
 }
 
 /* Contenido principal: ocupa todo el ancho y alto restantes. */
