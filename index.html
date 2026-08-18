@@ -25,6 +25,16 @@
     <a class="enlace-salto" href="#contenido">Saltar al contenido</a>
 
     <header class="barra-superior">
+      <button
+        class="boton-menu"
+        id="boton-menu"
+        type="button"
+        aria-label="Abrir menú de temas"
+        aria-expanded="false"
+        aria-controls="panel-lateral"
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
       <a class="barra-superior__marca-enlace" href="index.html">
         <img
           class="marca__logo"
@@ -54,10 +64,11 @@
     </header>
 
     <div class="aplicacion">
-      <aside class="panel" aria-label="Temas del curso">
+      <aside class="panel" id="panel-lateral" aria-label="Temas del curso">
         <p class="panel__cabecera eyebrow">Temario</p>
         <nav class="panel__nav" id="panel-navegacion" aria-label="Navegación por temas"></nav>
       </aside>
+      <div class="panel__velo" id="panel-velo" hidden></div>
 
       <main class="contenido" id="contenido">
         <div id="vista-contenido"></div>

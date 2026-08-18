@@ -14,6 +14,30 @@
   z-index: 10;
 }
 
+/* Botón hamburguesa: solo visible en móvil (ver media query). */
+.boton-menu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.boton-menu:hover {
+  background: var(--color-paper-3);
+}
+
+.boton-menu:active {
+  transform: translateY(1px);
+}
+
 .barra-superior__marca {
   display: inline-flex;
   align-items: center;
@@ -119,7 +143,12 @@
   color: var(--color-muted);
 }
 
-/* Móvil: panel colapsado a franja horizontal y contenido a ancho completo. */
+/* Velo (fondo oscurecido) del panel en móvil: oculto en desktop. */
+.panel__velo {
+  display: none;
+}
+
+/* Móvil: el panel lateral se convierte en un cajón deslizante tras el menú. */
 @media (max-width: 768px) {
   .barra-superior {
     flex-wrap: wrap;
@@ -128,14 +157,31 @@
     gap: var(--space-sm);
   }
 
+  .boton-menu {
+    display: inline-flex;
+  }
+
+  .barra-superior__marca-enlace {
+    order: 1;
+    min-width: 0;
+  }
+
+  .barra-superior__contador {
+    order: 2;
+    margin-left: auto;
+  }
+
   .barra-superior__busqueda {
     order: 3;
     flex-basis: 100%;
     max-width: none;
   }
 
-  .barra-superior__contador {
-    margin-left: auto;
+  /* Muy estrecho: el contador cede espacio a la marca y al menú. */
+  @media (max-width: 480px) {
+    .barra-superior__contador {
+      display: none;
+    }
   }
 
   .aplicacion {
@@ -144,19 +190,42 @@
   }
 
   .panel {
-    border-right: 0;
-    border-bottom: var(--rule-hair);
-    overflow-x: auto;
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(300px, 85vw);
+    border-right: var(--rule-hair);
+    border-bottom: 0;
+    overflow-y: auto;
+    transform: translateX(-105%);
+    transition: transform var(--dur-base) var(--ease-snap);
+    z-index: 40;
+    box-shadow: var(--shadow-card);
+  }
+
+  body.panel-abierto .panel {
+    transform: translateX(0);
   }
 
   .panel__cabecera {
-    display: none;
+    display: block;
   }
 
   .panel__nav {
-    flex-direction: row;
-    overflow-x: auto;
-    padding: var(--space-sm);
+    flex-direction: column;
+    overflow: visible;
+    padding: var(--space-xs) var(--space-md) var(--space-lg);
+  }
+
+  .panel__velo {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 35;
+    background: oklch(20% 0.012 250 / 0.45);
+  }
+
+  .panel__velo[hidden] {
+    display: none;
   }
 
   .contenido {
