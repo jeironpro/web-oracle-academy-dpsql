@@ -20,8 +20,11 @@ const RUTA_MANIFIESTO = "data/manifesto.json";
 /** Límite de un archivo en GitHub (100 MB); por encima, la web usa descarga externa. */
 const LIMITE_GITHUB_BYTES = 100 * 1024 * 1024;
 
-/** Página oficial de descarga de Oracle Data Modeler. */
-const URL_DATA_MODELER = "https://www.oracle.com/database/technologies/appdev/datamodeler.html";
+/** Primera línea de un pointer de Git LFS. */
+const PREFIJO_POINTER_LFS = "version https://git-lfs.github.com/spec/v1\n";
+
+/** Rama base para construir URLs raw de GitHub (archivos LFS). */
+const RAMA_BASE = "main";
 
 /** Títulos legibles de las carpetas de tema (derivados del nombre de carpeta del curso). */
 const TITULOS_CARPETAS = {
@@ -133,6 +136,40 @@ export function tituloDeArchivo(nombre, parsed = parsearNombreArchivo(nombre)) {
   return humanizarNombre(nombre);
 }
 
+/**
+ * Lee el tamaño declarado en un pointer de Git LFS.
+ * En CI, actions/checkout no descarga el contenido LFS y deja el pointer
+ * (~130 bytes); el tamaño real viaja en la línea `size` del pointer.
+ * @param {string} contenido Contenido del pointer.
+ * @returns {number | null}
+ */
+export function tamanoDesdePointer(contenido) {
+  if (!contenido.startsWith(PREFIJO_POINTER_LFS)) {
+    return null;
+  }
+  const coincidencia = contenido.match(/^size (\d+)$/m);
+  return coincidencia === null ? null : Number.parseInt(coincidencia[1], 10);
+}
+
+/**
+ * Devuelve el tamaño efectivo de un archivo: el real si es contenido LFS,
+ * o el declarado por el pointer si el contenido no está descargado.
+ * @param {string} ruta Ruta del archivo.
+ * @param {number} tamanoStat Tamaño según stat().
+ * @returns {Promise<number>}
+ */
+export async function tamanoEfectivo(ruta, tamanoStat) {
+  if (tamanoStat > 512) {
+    return tamanoStat;
+  }
+  try {
+    const contenido = await readFile(ruta, "utf8");
+    return tamanoDesdePointer(contenido) ?? tamanoStat;
+  } catch {
+    return tamanoStat;
+  }
+}
+
 /** Devuelve los metadatos del curso a partir de la carpeta que lo contiene. */
 export function metadatosDeCurso(nombreCarpeta) {
   return (
@@ -185,18 +222,20 @@ export async function generarManifesto(raiz = RUTA_RAIZ_DEFECTO) {
       if (!info.isFile()) {
         continue;
       }
+      const tamano = await tamanoEfectivo(rutaArchivo, info.size);
       const parsed = parsearNombreArchivo(archivo);
-      const esExterno = info.size > LIMITE_GITHUB_BYTES;
+      const esExterno = tamano > LIMITE_GITHUB_BYTES;
       archivos.push({
         nombre: archivo,
         titulo: tituloDeArchivo(archivo, parsed),
         ruta: `${rutaCurso}/${carpeta.name}/${archivo}`,
         tipo: parsed.tipo,
-        tamano: info.size,
+        tamano,
         leccion: parsed.leccion,
         esPractica: parsed.esPractica,
         externo: esExterno,
-        urlExterna: esExterno ? URL_DATA_MODELER : null,
+        urlExterna: esExterno ? urlRawDeGitHub(`${rutaCurso}/${carpeta.name}/${archivo}`) : null,
+        nota: esExterno ? "Archivo grande alojado con Git LFS; la descarga sale de GitHub." : null,
       });
       totalArchivos += 1;
     }
@@ -218,6 +257,20 @@ export async function generarManifesto(raiz = RUTA_RAIZ_DEFECTO) {
     curso: { ...metadatosDeCurso(carpetaCurso.name), totalArchivos, totalTemas: temas.length },
     temas,
   };
+}
+
+/**
+ * Construye la URL raw de GitHub para un archivo LFS (GitHub Pages no sirve LFS).
+ * @param {string} ruta Relativa al repositorio.
+ * @returns {string}
+ */
+export function urlRawDeGitHub(ruta) {
+  const remoto =
+    process.env.GIT_REMOTE_ORIGIN ?? "git@github.com:jeironpro/oracle-academy-dpsql.git";
+  const coincidencia = remoto.match(/(?:github\.com[:/])([^/]+)\/([^/]+?)(?:\.git)?$/);
+  const propietario = coincidencia?.[1] ?? "jeironpro";
+  const repositorio = coincidencia?.[2] ?? "oracle-academy-dpsql";
+  return `https://github.com/${propietario}/${repositorio}/raw/${RAMA_BASE}/${ruta}`;
 }
 
 /** Escribe el manifiesto en disco (pretty-printed). */

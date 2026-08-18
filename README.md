@@ -95,8 +95,9 @@ El workflow `ci/pages` (GitHub Actions) ejecuta lint + tests en cada pull
 request y despliega en **GitHub Pages** al hacer merge en `main`.
 
 > Nota: el instalador `datamodeler_24_3_1_351_0831_x64.zip` (324 MB) supera
-> el límite de 100 MB por archivo de GitHub y no está en el repositorio; el
-> sitio lo muestra como descarga externa desde Oracle.
+> el límite de 100 MB por archivo de GitHub y se gestiona con **Git LFS**
+> (`.gitattributes`). Como GitHub Pages no sirve archivos LFS, el sitio enlaza
+> su descarga a la URL `raw` de GitHub.
 
 ## 📜 Licencia
 

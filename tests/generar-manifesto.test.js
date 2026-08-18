@@ -4,8 +4,10 @@ import {
   humanizarNombre,
   metadatosDeCurso,
   parsearNombreArchivo,
+  tamanoDesdePointer,
   tituloDeArchivo,
   tituloDeCarpeta,
+  urlRawDeGitHub,
 } from "../tools/generar-manifesto.js";
 
 describe("parsearNombreArchivo", () => {
@@ -72,6 +74,32 @@ describe("humanizarNombre", () => {
 
   it("aplica acentos conocidos", () => {
     expect(humanizarNombre("garantia_consultas_calidad")).toBe("Garantía Consultas Calidad");
+  });
+});
+
+describe("tamanoDesdePointer", () => {
+  const pointer = [
+    "version https://git-lfs.github.com/spec/v1",
+    "oid sha256:0a7086b6103426d1cb731ebea49979051b23fd296f58cb69bc596525dcabd4a6",
+    "size 339463447",
+  ].join("\n");
+
+  it("lee el tamaño declarado de un pointer LFS", () => {
+    expect(tamanoDesdePointer(pointer)).toBe(339463447);
+  });
+
+  it("devuelve null si el contenido no es un pointer LFS", () => {
+    expect(tamanoDesdePointer("PK\u0003\u0004 contenido binario")).toBeNull();
+    expect(tamanoDesdePointer("version https://otra-cosa/v1\nsize 100\n")).toBeNull();
+  });
+});
+
+describe("urlRawDeGitHub", () => {
+  it("construye la URL raw del archivo desde el remoto", () => {
+    const url = urlRawDeGitHub("oracle_academy/curso/0_recursos/archivo.zip");
+    expect(url).toBe(
+      "https://github.com/jeironpro/oracle-academy-dpsql/raw/main/oracle_academy/curso/0_recursos/archivo.zip",
+    );
   });
 });
 
