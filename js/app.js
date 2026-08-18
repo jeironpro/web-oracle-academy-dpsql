@@ -11,6 +11,9 @@ const elementos = {
   contadorGlobal: document.querySelector("#contador-global"),
   campoBusqueda: document.querySelector("#campo-busqueda"),
   teclaBusqueda: document.querySelector("#tecla-busqueda"),
+  botonMenu: document.querySelector("#boton-menu"),
+  panelLateral: document.querySelector("#panel-lateral"),
+  velo: document.querySelector("#panel-velo"),
 };
 
 let manifesto = null;
@@ -42,12 +45,15 @@ async function inicializar() {
   // Atajo de teclado: Ctrl/⌘ + K enfoca la búsqueda desde cualquier lugar.
   window.addEventListener("keydown", (evento) => {
     const esAtajo = (evento.ctrlKey || evento.metaKey) && evento.key.toLowerCase() === "k";
-    if (!esAtajo) {
+    if (esAtajo) {
+      evento.preventDefault();
+      elementos.campoBusqueda?.focus();
+      elementos.campoBusqueda?.select();
       return;
     }
-    evento.preventDefault();
-    elementos.campoBusqueda?.focus();
-    elementos.campoBusqueda?.select();
+    if (evento.key === "Escape" && panelAbierto()) {
+      cerrarPanel();
+    }
   });
 
   // Escape: limpia la consulta si hay texto; si está vacía, suelta el foco.
@@ -71,6 +77,51 @@ async function inicializar() {
     }
     temporizadorBusqueda = window.setTimeout(renderizar, RETARDO_BUSQUEDA);
   });
+
+  // Menú hamburguesa: abrir/cerrar el cajón de temas en móvil.
+  elementos.botonMenu?.addEventListener("click", alternarPanel);
+  elementos.velo?.addEventListener("click", cerrarPanel);
+  window.addEventListener("resize", () => {
+    if (!esMovil() && panelAbierto()) {
+      cerrarPanel();
+    }
+  });
+}
+
+/** true si la pantalla está en el rango móvil (cajón activo). */
+function esMovil() {
+  return window.matchMedia("(max-width: 768px)").matches;
+}
+
+function panelAbierto() {
+  return document.body.classList.contains("panel-abierto");
+}
+
+function alternarPanel() {
+  if (panelAbierto()) {
+    cerrarPanel();
+  } else {
+    abrirPanel();
+  }
+}
+
+function abrirPanel() {
+  document.body.classList.add("panel-abierto");
+  if (elementos.velo !== null) {
+    elementos.velo.hidden = false;
+  }
+  elementos.botonMenu?.setAttribute("aria-expanded", "true");
+  elementos.botonMenu?.setAttribute("aria-label", "Cerrar menú de temas");
+}
+
+function cerrarPanel() {
+  document.body.classList.remove("panel-abierto");
+  if (elementos.velo !== null) {
+    elementos.velo.hidden = true;
+  }
+  elementos.botonMenu?.setAttribute("aria-expanded", "false");
+  elementos.botonMenu?.setAttribute("aria-label", "Abrir menú de temas");
+  elementos.botonMenu?.focus();
 }
 
 /** Etiqueta del atajo según plataforma: ⌘ K en macOS, Ctrl K en el resto. */
@@ -104,6 +155,9 @@ function seleccionarVista(vista) {
   window.location.hash = hash;
   actualizarTitulo();
   renderizar();
+  if (esMovil() && panelAbierto()) {
+    cerrarPanel();
+  }
 }
 
 function renderizar() {
