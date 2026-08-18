@@ -86,13 +86,6 @@
   margin-inline: auto;
 }
 
-.barra-superior__contador {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-muted);
-  white-space: nowrap;
-}
-
 /* Aplicación: panel izquierdo fijo + contenido con scroll propio. */
 .aplicacion {
   display: grid;
@@ -116,7 +109,7 @@
 .panel__nav {
   display: flex;
   flex-direction: column;
-  gap: 0.4375rem;
+  gap: 0.5625rem;
   padding: var(--space-2xs) var(--space-md) var(--space-sm);
 }
 
@@ -166,22 +159,10 @@
     min-width: 0;
   }
 
-  .barra-superior__contador {
-    order: 2;
-    margin-left: auto;
-  }
-
   .barra-superior__busqueda {
     order: 3;
     flex-basis: 100%;
     max-width: none;
-  }
-
-  /* Muy estrecho: el contador cede espacio a la marca y al menú. */
-  @media (max-width: 480px) {
-    .barra-superior__contador {
-      display: none;
-    }
   }
 
   .aplicacion {

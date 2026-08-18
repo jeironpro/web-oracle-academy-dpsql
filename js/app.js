@@ -8,7 +8,6 @@ const RETARDO_BUSQUEDA = 150; // ms de debounce al escribir
 const elementos = {
   panel: document.querySelector("#panel-navegacion"),
   contenido: document.querySelector("#vista-contenido"),
-  contadorGlobal: document.querySelector("#contador-global"),
   campoBusqueda: document.querySelector("#campo-busqueda"),
   teclaBusqueda: document.querySelector("#tecla-busqueda"),
   botonMenu: document.querySelector("#boton-menu"),
@@ -28,10 +27,6 @@ async function inicializar() {
     return;
   }
 
-  const curso = manifesto.curso;
-  if (elementos.contadorGlobal !== null) {
-    elementos.contadorGlobal.textContent = `${curso.totalArchivos} archivos · ${curso.totalTemas} temas`;
-  }
   leerVistaDesdeHash();
   actualizarTitulo();
   renderizar();
