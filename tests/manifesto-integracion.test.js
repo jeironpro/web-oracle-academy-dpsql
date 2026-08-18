@@ -19,14 +19,16 @@ describe("manifiesto de contenido (integración)", () => {
     expect(temaSelect.archivos[0].esPractica).toBe(false);
   });
 
-  it("marca el instalador de Data Modeler como descarga externa", async () => {
+  it("marca el instalador de Data Modeler como descarga externa vía GitHub raw", async () => {
     const manifesto = await generarManifesto();
     const temaRecursos = manifesto.temas.find((tema) => tema.id === "0_recursos");
     const instalador = temaRecursos.archivos.find((archivo) =>
       archivo.nombre.startsWith("datamodeler_"),
     );
     expect(instalador.externo).toBe(true);
-    expect(instalador.urlExterna).toContain("oracle.com");
+    expect(instalador.urlExterna).toContain("github.com");
+    expect(instalador.urlExterna).toContain("/raw/main/");
+    expect(instalador.nota).toBeTruthy();
   });
 
   it("no deja archivos del curso sin los campos mínimos", async () => {
