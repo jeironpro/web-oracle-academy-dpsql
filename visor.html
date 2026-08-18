@@ -24,13 +24,19 @@
     <a class="enlace-salto" href="#visor-documento">Saltar al visor</a>
 
     <header class="visor-barra">
-      <nav class="visor-barra__migas" aria-label="Migas de pan">
-        <a class="visor-barra__enlace" href="index.html">Índice</a>
-        <span class="visor-barra__separador" aria-hidden="true">/</span>
-        <a class="visor-barra__enlace" id="miga-tema" href="index.html">Tema</a>
-        <span class="visor-barra__separador" aria-hidden="true">/</span>
-        <span class="visor-barra__actual" id="miga-archivo" aria-current="page">Documento</span>
-      </nav>
+      <div class="visor-barra__izquierda">
+        <a class="btn btn--soft btn--sm visor-barra__volver" href="index.html">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+          <span>Volver al índice</span>
+        </a>
+        <nav class="visor-barra__migas" aria-label="Migas de pan">
+          <a class="visor-barra__enlace" href="index.html">Índice</a>
+          <span class="visor-barra__separador" aria-hidden="true">/</span>
+          <a class="visor-barra__enlace" id="miga-tema" href="index.html">Tema</a>
+          <span class="visor-barra__separador" aria-hidden="true">/</span>
+          <span class="visor-barra__actual" id="miga-archivo" aria-current="page">Documento</span>
+        </nav>
+      </div>
       <div class="visor-barra__acciones">
         <a class="btn btn--cyan" id="enlace-descarga" href="index.html" download>
           <span class="material-symbols-outlined" aria-hidden="true">download</span>

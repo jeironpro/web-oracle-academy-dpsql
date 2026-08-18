@@ -203,6 +203,7 @@ function renderizarTarjeta(archivo, idTema) {
   });
   const esExterno = archivo.externo === true;
   const esVisible = archivo.tipo === "pdf" && !esExterno;
+  const url = esExterno ? archivo.urlExterna : urlDeArchivo(archivo);
 
   const chip = crearElemento("span", {
     clase: "tarjeta__chip material-symbols-outlined",
@@ -211,15 +212,15 @@ function renderizarTarjeta(archivo, idTema) {
   });
 
   const enlace = crearElemento("a", { clase: "tarjeta__enlace" });
-  if (esExterno) {
-    enlace.setAttribute("href", archivo.urlExterna);
-    enlace.setAttribute("target", "_blank");
-    enlace.setAttribute("rel", "noopener");
-  } else if (esVisible) {
+  if (esVisible) {
     enlace.setAttribute("href", urlDeVisor(archivo, idTema));
   } else {
-    enlace.setAttribute("href", urlDeArchivo(archivo));
+    enlace.setAttribute("href", url);
     enlace.setAttribute("download", archivo.nombre);
+    if (esExterno) {
+      enlace.setAttribute("target", "_blank");
+      enlace.setAttribute("rel", "noopener");
+    }
   }
   const cuerpo = crearElemento("span", { clase: "tarjeta__cuerpo" });
   const metaTexto = `${archivo.nombre} · ${tipoLegible(archivo.tipo)} · ${formatearTamano(archivo.tamano)}`;
@@ -230,18 +231,14 @@ function renderizarTarjeta(archivo, idTema) {
   enlace.append(cuerpo);
 
   const accion = crearElemento("a", { clase: "btn btn--soft btn--sm tarjeta__accion" });
+  accion.setAttribute("href", url);
+  accion.setAttribute("download", archivo.nombre);
+  accion.setAttribute("aria-label", `Descargar ${archivo.titulo}`);
   if (esExterno) {
-    accion.setAttribute("href", archivo.urlExterna);
     accion.setAttribute("target", "_blank");
     accion.setAttribute("rel", "noopener");
-    accion.setAttribute("aria-label", `Descargar ${archivo.titulo} desde GitHub`);
-    accion.textContent = "GitHub";
-  } else {
-    accion.setAttribute("href", urlDeArchivo(archivo));
-    accion.setAttribute("download", archivo.nombre);
-    accion.setAttribute("aria-label", `Descargar ${archivo.titulo}`);
-    accion.textContent = "Descargar";
   }
+  accion.textContent = "Descargar";
 
   tarjeta.append(chip, enlace, accion);
   return tarjeta;
