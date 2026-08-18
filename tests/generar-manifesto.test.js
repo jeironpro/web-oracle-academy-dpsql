@@ -6,6 +6,7 @@ import {
   parsearNombreArchivo,
   tituloDeArchivo,
   tituloDeCarpeta,
+  urlRawDeGitHub,
 } from "../tools/generar-manifesto.js";
 
 describe("parsearNombreArchivo", () => {
@@ -72,6 +73,15 @@ describe("humanizarNombre", () => {
 
   it("aplica acentos conocidos", () => {
     expect(humanizarNombre("garantia_consultas_calidad")).toBe("Garantía Consultas Calidad");
+  });
+});
+
+describe("urlRawDeGitHub", () => {
+  it("construye la URL raw del archivo desde el remoto", () => {
+    const url = urlRawDeGitHub("oracle_academy/curso/0_recursos/archivo.zip");
+    expect(url).toBe(
+      "https://github.com/jeironpro/oracle-academy-dpsql/raw/main/oracle_academy/curso/0_recursos/archivo.zip",
+    );
   });
 });
 

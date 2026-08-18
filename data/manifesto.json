@@ -1,5 +1,5 @@
 {
-  "generadoEn": "2026-08-18T23:10:48.382Z",
+  "generadoEn": "2026-08-18T23:23:11.454Z",
   "raiz": "oracle_academy/programacion_base_datos_sql_47_50",
   "curso": {
     "titulo": "Programación de Base de Datos SQL",
@@ -24,7 +24,8 @@
           "leccion": null,
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_course_map_esp.pdf",
@@ -35,7 +36,8 @@
           "leccion": null,
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "oracle_apex_learner_guide_esp.pdf",
@@ -46,7 +48,8 @@
           "leccion": null,
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "oracle_flix_project_erd_esp.pdf",
@@ -57,7 +60,8 @@
           "leccion": null,
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "oracle_flix_project_rubric_esp.pdf",
@@ -68,7 +72,8 @@
           "leccion": null,
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "oracle_flix_sql_project_exercise_esp.pdf",
@@ -79,7 +84,8 @@
           "leccion": null,
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "oracle_flix_sql_project_tables_esp.pdf",
@@ -90,7 +96,8 @@
           "leccion": null,
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "sql_schema_erd_and_table_designs.pdf",
@@ -101,7 +108,8 @@
           "leccion": null,
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "datamodeler_24_3_1_351_0831_x64.zip",
@@ -112,7 +120,8 @@
           "leccion": null,
           "esPractica": false,
           "externo": true,
-          "urlExterna": "https://www.oracle.com/database/technologies/appdev/datamodeler.html"
+          "urlExterna": "https://github.com/jeironpro/oracle-academy-dpsql/raw/main/oracle_academy/programacion_base_datos_sql_47_50/0_recursos/datamodeler_24_3_1_351_0831_x64.zip",
+          "nota": "Archivo grande alojado con Git LFS; la descarga sale de GitHub."
         },
         {
           "nombre": "sql_schema.zip",
@@ -123,7 +132,8 @@
           "leccion": null,
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -143,7 +153,8 @@
           "leccion": "1.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_1_2_esp.pdf",
@@ -154,7 +165,8 @@
           "leccion": "1.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_1_3_esp.pdf",
@@ -165,7 +177,8 @@
           "leccion": "1.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_1_3_practice_esp.pdf",
@@ -176,7 +189,8 @@
           "leccion": "1.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_1_3_practice_esp.docx",
@@ -187,7 +201,8 @@
           "leccion": "1.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -207,7 +222,8 @@
           "leccion": "2.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_2_1_practice_esp.pdf",
@@ -218,7 +234,8 @@
           "leccion": "2.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_2_1_practice_esp.docx",
@@ -229,7 +246,8 @@
           "leccion": "2.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_2_2_esp.pdf",
@@ -240,7 +258,8 @@
           "leccion": "2.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_2_2_practice_esp.pdf",
@@ -251,7 +270,8 @@
           "leccion": "2.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_2_2_practice_esp.docx",
@@ -262,7 +282,8 @@
           "leccion": "2.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_2_3_esp.pdf",
@@ -273,7 +294,8 @@
           "leccion": "2.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_2_3_practice_esp.pdf",
@@ -284,7 +306,8 @@
           "leccion": "2.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_2_3_practice_esp.docx",
@@ -295,7 +318,8 @@
           "leccion": "2.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -315,7 +339,8 @@
           "leccion": "3.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_3_1_practice_esp.pdf",
@@ -326,7 +351,8 @@
           "leccion": "3.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_3_1_practice_esp.docx",
@@ -337,7 +363,8 @@
           "leccion": "3.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_3_2_esp.pdf",
@@ -348,7 +375,8 @@
           "leccion": "3.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_3_2_practice_esp.pdf",
@@ -359,7 +387,8 @@
           "leccion": "3.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_3_2_practice_esp.docx",
@@ -370,7 +399,8 @@
           "leccion": "3.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_3_3_esp.pdf",
@@ -381,7 +411,8 @@
           "leccion": "3.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_3_3_practice_esp.pdf",
@@ -392,7 +423,8 @@
           "leccion": "3.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_3_3_practice_esp.docx",
@@ -403,7 +435,8 @@
           "leccion": "3.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -423,7 +456,8 @@
           "leccion": "4.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_4_1_practice_esp.pdf",
@@ -434,7 +468,8 @@
           "leccion": "4.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_4_1_practice_esp.docx",
@@ -445,7 +480,8 @@
           "leccion": "4.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_4_2_esp.pdf",
@@ -456,7 +492,8 @@
           "leccion": "4.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_4_2_practice_esp.pdf",
@@ -467,7 +504,8 @@
           "leccion": "4.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_4_2_practice_esp.docx",
@@ -478,7 +516,8 @@
           "leccion": "4.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_4_3_esp.pdf",
@@ -489,7 +528,8 @@
           "leccion": "4.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_4_3_practice_esp.pdf",
@@ -500,7 +540,8 @@
           "leccion": "4.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_4_3_practice_esp.docx",
@@ -511,7 +552,8 @@
           "leccion": "4.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -531,7 +573,8 @@
           "leccion": "5.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_5_1_practice_esp.pdf",
@@ -542,7 +585,8 @@
           "leccion": "5.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_5_1_practice_esp.docx",
@@ -553,7 +597,8 @@
           "leccion": "5.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_5_2_esp.pdf",
@@ -564,7 +609,8 @@
           "leccion": "5.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_5_2_practice_esp.pdf",
@@ -575,7 +621,8 @@
           "leccion": "5.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_5_2_practice_esp.docx",
@@ -586,7 +633,8 @@
           "leccion": "5.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_5_3_esp.pdf",
@@ -597,7 +645,8 @@
           "leccion": "5.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_5_3_practice_esp.pdf",
@@ -608,7 +657,8 @@
           "leccion": "5.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_5_3_practice_esp.docx",
@@ -619,7 +669,8 @@
           "leccion": "5.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -639,7 +690,8 @@
           "leccion": "6.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_1_practice_esp.pdf",
@@ -650,7 +702,8 @@
           "leccion": "6.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_1_practice_esp.docx",
@@ -661,7 +714,8 @@
           "leccion": "6.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_2_esp.pdf",
@@ -672,7 +726,8 @@
           "leccion": "6.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_2_practice_esp.pdf",
@@ -683,7 +738,8 @@
           "leccion": "6.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_2_practice_esp.docx",
@@ -694,7 +750,8 @@
           "leccion": "6.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_3_esp.pdf",
@@ -705,7 +762,8 @@
           "leccion": "6.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_3_practice_esp.pdf",
@@ -716,7 +774,8 @@
           "leccion": "6.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_3_practice_esp.docx",
@@ -727,7 +786,8 @@
           "leccion": "6.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_4_esp.pdf",
@@ -738,7 +798,8 @@
           "leccion": "6.4",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_4_practice_esp.pdf",
@@ -749,7 +810,8 @@
           "leccion": "6.4",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_6_4_practice_esp.docx",
@@ -760,7 +822,8 @@
           "leccion": "6.4",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -780,7 +843,8 @@
           "leccion": "7.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_7_1_practice_esp.pdf",
@@ -791,7 +855,8 @@
           "leccion": "7.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_7_1_practice_esp.docx",
@@ -802,7 +867,8 @@
           "leccion": "7.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_7_2_esp.pdf",
@@ -813,7 +879,8 @@
           "leccion": "7.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_7_2_practice_esp.pdf",
@@ -824,7 +891,8 @@
           "leccion": "7.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_7_2_practice_esp.docx",
@@ -835,7 +903,8 @@
           "leccion": "7.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -855,7 +924,8 @@
           "leccion": "8.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_8_1_practice_esp.pdf",
@@ -866,7 +936,8 @@
           "leccion": "8.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_8_1_practice_esp.docx",
@@ -877,7 +948,8 @@
           "leccion": "8.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_8_2_esp.pdf",
@@ -888,7 +960,8 @@
           "leccion": "8.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_8_2_practice_esp.pdf",
@@ -899,7 +972,8 @@
           "leccion": "8.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_8_2_practice_esp.docx",
@@ -910,7 +984,8 @@
           "leccion": "8.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -930,7 +1005,8 @@
           "leccion": "9.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_9_1_practice_esp.pdf",
@@ -941,7 +1017,8 @@
           "leccion": "9.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_9_1_practice_esp.docx",
@@ -952,7 +1029,8 @@
           "leccion": "9.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_9_2_esp.pdf",
@@ -963,7 +1041,8 @@
           "leccion": "9.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_9_2_practice_esp.pdf",
@@ -974,7 +1053,8 @@
           "leccion": "9.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_9_2_practice_esp.docx",
@@ -985,7 +1065,8 @@
           "leccion": "9.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_9_3_esp.pdf",
@@ -996,7 +1077,8 @@
           "leccion": "9.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_9_3_practice_esp.pdf",
@@ -1007,7 +1089,8 @@
           "leccion": "9.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_9_3_practice_esp.docx",
@@ -1018,7 +1101,8 @@
           "leccion": "9.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1038,7 +1122,8 @@
           "leccion": "10.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_10_1_practice_esp.pdf",
@@ -1049,7 +1134,8 @@
           "leccion": "10.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_10_1_practice_esp.docx",
@@ -1060,7 +1146,8 @@
           "leccion": "10.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_10_2_esp.pdf",
@@ -1071,7 +1158,8 @@
           "leccion": "10.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_10_2_practice_esp.pdf",
@@ -1082,7 +1170,8 @@
           "leccion": "10.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_10_2_practice_esp.docx",
@@ -1093,7 +1182,8 @@
           "leccion": "10.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_10_3_esp.pdf",
@@ -1104,7 +1194,8 @@
           "leccion": "10.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_10_4_esp.pdf",
@@ -1115,7 +1206,8 @@
           "leccion": "10.4",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1135,7 +1227,8 @@
           "leccion": "11.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1155,7 +1248,8 @@
           "leccion": "12.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_12_1_practice_esp.pdf",
@@ -1166,7 +1260,8 @@
           "leccion": "12.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_12_1_practice_esp.docx",
@@ -1177,7 +1272,8 @@
           "leccion": "12.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_12_2_esp.pdf",
@@ -1188,7 +1284,8 @@
           "leccion": "12.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_12_2_practice_esp.pdf",
@@ -1199,7 +1296,8 @@
           "leccion": "12.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_12_2_practice_esp.docx",
@@ -1210,7 +1308,8 @@
           "leccion": "12.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_12_3_esp.pdf",
@@ -1221,7 +1320,8 @@
           "leccion": "12.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_12_3_practice_esp.pdf",
@@ -1232,7 +1332,8 @@
           "leccion": "12.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_12_3_practice_esp.docx",
@@ -1243,7 +1344,8 @@
           "leccion": "12.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1263,7 +1365,8 @@
           "leccion": "13.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_13_1_practice_esp.pdf",
@@ -1274,7 +1377,8 @@
           "leccion": "13.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_13_2_esp.pdf",
@@ -1285,7 +1389,8 @@
           "leccion": "13.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_13_2_practice_esp.pdf",
@@ -1296,7 +1401,8 @@
           "leccion": "13.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_13_3_esp.pdf",
@@ -1307,7 +1413,8 @@
           "leccion": "13.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1327,7 +1434,8 @@
           "leccion": "14.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_14_2_esp.pdf",
@@ -1338,7 +1446,8 @@
           "leccion": "14.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_14_3_esp.pdf",
@@ -1349,7 +1458,8 @@
           "leccion": "14.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_14_3_practice_esp.pdf",
@@ -1360,7 +1470,8 @@
           "leccion": "14.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1380,7 +1491,8 @@
           "leccion": "15.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_15_1_practice_esp.pdf",
@@ -1391,7 +1503,8 @@
           "leccion": "15.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_15_2_esp.pdf",
@@ -1402,7 +1515,8 @@
           "leccion": "15.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_15_2_practice_esp.pdf",
@@ -1413,7 +1527,8 @@
           "leccion": "15.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_15_3_esp.pdf",
@@ -1424,7 +1539,8 @@
           "leccion": "15.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_15_3_practice_esp.pdf",
@@ -1435,7 +1551,8 @@
           "leccion": "15.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1455,7 +1572,8 @@
           "leccion": "16.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_16_1_practice_esp.pdf",
@@ -1466,7 +1584,8 @@
           "leccion": "16.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_16_2_esp.pdf",
@@ -1477,7 +1596,8 @@
           "leccion": "16.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_16_2_practice_esp.pdf",
@@ -1488,7 +1608,8 @@
           "leccion": "16.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1508,7 +1629,8 @@
           "leccion": "17.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_17_1_practice_esp.pdf",
@@ -1519,7 +1641,8 @@
           "leccion": "17.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_17_2_esp.pdf",
@@ -1530,7 +1653,8 @@
           "leccion": "17.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_17_2_practice_esp.pdf",
@@ -1541,7 +1665,8 @@
           "leccion": "17.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_17_3_esp.pdf",
@@ -1552,7 +1677,8 @@
           "leccion": "17.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_17_3_practice_esp.pdf",
@@ -1563,7 +1689,8 @@
           "leccion": "17.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1583,7 +1710,8 @@
           "leccion": "18.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_18_1_practice_esp.pdf",
@@ -1594,7 +1722,8 @@
           "leccion": "18.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1614,7 +1743,8 @@
           "leccion": "19.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_19_1_practice_esp.pdf",
@@ -1625,7 +1755,8 @@
           "leccion": "19.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_19_2_esp.pdf",
@@ -1636,7 +1767,8 @@
           "leccion": "19.2",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_19_2_practice_esp.pdf",
@@ -1647,7 +1779,8 @@
           "leccion": "19.2",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_19_3_esp.pdf",
@@ -1658,7 +1791,8 @@
           "leccion": "19.3",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_19_3_practice_esp.pdf",
@@ -1669,7 +1803,8 @@
           "leccion": "19.3",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     },
@@ -1689,7 +1824,8 @@
           "leccion": "20.1",
           "esPractica": false,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         },
         {
           "nombre": "dp_20_1_practice_esp.pdf",
@@ -1700,7 +1836,8 @@
           "leccion": "20.1",
           "esPractica": true,
           "externo": false,
-          "urlExterna": null
+          "urlExterna": null,
+          "nota": null
         }
       ]
     }

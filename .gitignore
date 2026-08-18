@@ -149,6 +149,4 @@ vite.config.ts.timestamp-*
 # Memoria de diseño local de Hallmark (no debe llegar al remoto)
 .hallmark/
 
-# Instalador de Oracle Data Modeler: 324 MB, supera el límite de 100 MB de GitHub.
-# El sitio lo referencia como descarga externa (enlace a Oracle).
-oracle_academy/programacion_base_datos_sql_47_50/0_recursos/datamodeler_24_3_1_351_0831_x64.zip
+# Archivos grandes gestionados con Git LFS (ver .gitattributes)

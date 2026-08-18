@@ -20,8 +20,8 @@ const RUTA_MANIFIESTO = "data/manifesto.json";
 /** Límite de un archivo en GitHub (100 MB); por encima, la web usa descarga externa. */
 const LIMITE_GITHUB_BYTES = 100 * 1024 * 1024;
 
-/** Página oficial de descarga de Oracle Data Modeler. */
-const URL_DATA_MODELER = "https://www.oracle.com/database/technologies/appdev/datamodeler.html";
+/** Rama base para construir URLs raw de GitHub (archivos LFS). */
+const RAMA_BASE = "main";
 
 /** Títulos legibles de las carpetas de tema (derivados del nombre de carpeta del curso). */
 const TITULOS_CARPETAS = {
@@ -196,7 +196,8 @@ export async function generarManifesto(raiz = RUTA_RAIZ_DEFECTO) {
         leccion: parsed.leccion,
         esPractica: parsed.esPractica,
         externo: esExterno,
-        urlExterna: esExterno ? URL_DATA_MODELER : null,
+        urlExterna: esExterno ? urlRawDeGitHub(`${rutaCurso}/${carpeta.name}/${archivo}`) : null,
+        nota: esExterno ? "Archivo grande alojado con Git LFS; la descarga sale de GitHub." : null,
       });
       totalArchivos += 1;
     }
@@ -218,6 +219,19 @@ export async function generarManifesto(raiz = RUTA_RAIZ_DEFECTO) {
     curso: { ...metadatosDeCurso(carpetaCurso.name), totalArchivos, totalTemas: temas.length },
     temas,
   };
+}
+
+/**
+ * Construye la URL raw de GitHub para un archivo LFS (GitHub Pages no sirve LFS).
+ * @param {string} ruta Relativa al repositorio.
+ * @returns {string}
+ */
+export function urlRawDeGitHub(ruta) {
+  const remoto = process.env.GIT_REMOTE_ORIGIN ?? "git@github.com:jeironpro/oracle-academy-dpsql.git";
+  const coincidencia = remoto.match(/(?:github\.com[:/])([^/]+)\/([^/]+?)(?:\.git)?$/);
+  const propietario = coincidencia?.[1] ?? "jeironpro";
+  const repositorio = coincidencia?.[2] ?? "oracle-academy-dpsql";
+  return `https://github.com/${propietario}/${repositorio}/raw/${RAMA_BASE}/${ruta}`;
 }
 
 /** Escribe el manifiesto en disco (pretty-printed). */
