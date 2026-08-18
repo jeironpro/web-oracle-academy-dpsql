@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Programación de Base de Datos SQL · Oracle Academy</title>
+    <meta
+      name="description"
+      content="Índice completo del curso Programación de Base de Datos SQL de Oracle Academy (DPSQL 47–50): temas, lecciones, prácticas y recursos para leer o descargar."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages/catalogo.css" />
+  </head>
+  <body>
+    <a class="enlace-salto" href="#contenido">Saltar al contenido</a>
+
+    <header class="masthead">
+      <p class="masthead__etiqueta">Oracle Academy · DPSQL 47–50</p>
+      <h1 class="masthead__titulo">Programación de Base de Datos SQL</h1>
+      <p class="masthead__resumen">
+        Índice completo del curso: <span id="resumen-curso">21 temas · 137 archivos</span>. Lee los
+        PDF en el navegador o descarga cualquier recurso.
+      </p>
+    </header>
+
+    <main id="contenido">
+      <section class="busqueda" aria-label="Buscar y filtrar el curso">
+        <div class="busqueda__campo">
+          <label class="busqueda__label" for="campo-busqueda">Buscar en el curso</label>
+          <div class="busqueda__control">
+            <span class="busqueda__icono material-symbols-outlined" aria-hidden="true">search</span>
+            <input
+              id="campo-busqueda"
+              class="busqueda__input"
+              type="search"
+              placeholder="Lección, práctica, tema…"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="busqueda__filtros" role="group" aria-label="Filtrar por tipo de archivo">
+          <button class="chip" type="button" data-tipo="todos" aria-pressed="true">Todos</button>
+          <button class="chip" type="button" data-tipo="pdf" aria-pressed="false">PDF</button>
+          <button class="chip" type="button" data-tipo="docx" aria-pressed="false">DOCX</button>
+          <button class="chip" type="button" data-tipo="zip" aria-pressed="false">ZIP</button>
+        </div>
+
+        <p class="busqueda__contador" id="contador-resultados" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="indice" id="indice" aria-label="Temario del curso"></section>
+
+      <section class="vacio" id="estado-vacio" hidden>
+        <h2 class="vacio__titulo">Sin resultados</h2>
+        <p class="vacio__texto">
+          Ningún archivo coincide con la búsqueda. Prueba con otro término o quita el filtro de
+          tipo.
+        </p>
+      </section>
+    </main>
+
+    <footer class="colofon">
+      <p class="colofon__marca">oracle-academy-dpsql</p>
+      <p class="colofon__linea">Curso DPSQL 47–50 · Materiales de Oracle Academy en español</p>
+      <nav class="colofon__enlaces" aria-label="Enlaces del pie">
+        <a href="https://github.com/jeironpro/oracle-academy-dpsql" target="_blank" rel="noopener"
+          >Repositorio</a
+        >
+        <a
+          href="https://www.oracle.com/database/technologies/appdev/datamodeler.html"
+          target="_blank"
+          rel="noopener"
+          >Oracle Data Modeler</a
+        >
+        <a href="https://academy.oracle.com" target="_blank" rel="noopener">Oracle Academy</a>
+      </nav>
+      <p class="colofon__licencia">MIT · jeironpro · 2026</p>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
