@@ -4,7 +4,7 @@
   align-items: center;
   gap: var(--space-sm);
   width: 100%;
-  padding: 0.35rem 0.75rem;
+  padding: 0.3rem 0.8rem;
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
@@ -54,6 +54,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
 .panel__item-conteo {

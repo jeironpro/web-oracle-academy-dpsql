@@ -10,6 +10,7 @@ const elementos = {
   contenido: document.querySelector("#vista-contenido"),
   contadorGlobal: document.querySelector("#contador-global"),
   campoBusqueda: document.querySelector("#campo-busqueda"),
+  teclaBusqueda: document.querySelector("#tecla-busqueda"),
 };
 
 let manifesto = null;
@@ -38,6 +39,31 @@ async function inicializar() {
     renderizar();
   });
 
+  // Atajo de teclado: Ctrl/⌘ + K enfoca la búsqueda desde cualquier lugar.
+  window.addEventListener("keydown", (evento) => {
+    const esAtajo = (evento.ctrlKey || evento.metaKey) && evento.key.toLowerCase() === "k";
+    if (!esAtajo) {
+      return;
+    }
+    evento.preventDefault();
+    elementos.campoBusqueda?.focus();
+    elementos.campoBusqueda?.select();
+  });
+
+  // Escape: limpia la consulta si hay texto; si está vacía, suelta el foco.
+  elementos.campoBusqueda?.addEventListener("keydown", (evento) => {
+    if (evento.key !== "Escape") {
+      return;
+    }
+    if (evento.target.value !== "") {
+      evento.target.value = "";
+      estado.consulta = "";
+      renderizar();
+    } else {
+      evento.target.blur();
+    }
+  });
+
   elementos.campoBusqueda?.addEventListener("input", (evento) => {
     estado.consulta = evento.target.value;
     if (temporizadorBusqueda !== null) {
@@ -46,6 +72,17 @@ async function inicializar() {
     temporizadorBusqueda = window.setTimeout(renderizar, RETARDO_BUSQUEDA);
   });
 }
+
+/** Etiqueta del atajo según plataforma: ⌘ K en macOS, Ctrl K en el resto. */
+function etiquetarAtajo() {
+  if (elementos.teclaBusqueda === null) {
+    return;
+  }
+  const esMac = /Mac|iPhone|iPad/.test(navigator.platform ?? navigator.userAgent);
+  elementos.teclaBusqueda.textContent = esMac ? "⌘ K" : "Ctrl K";
+}
+
+etiquetarAtajo();
 
 /** Lee la vista desde el hash (#todos o #tema-<id>). */
 function leerVistaDesdeHash() {
