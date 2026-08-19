@@ -1,84 +1,86 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Programación de Base de Datos SQL · Oracle Academy</title>
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <meta
-      name="description"
-      content="Índice completo del curso Programación de Base de Datos SQL de Oracle Academy (DPSQL 47–50): temas, lecciones, prácticas y recursos para leer o descargar."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="tokens.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/pages/catalog.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#content">Saltar al contenido</a>
-
-    <header class="top-bar">
-      <button
-        class="menu-button"
-        id="menu-button"
-        type="button"
-        aria-label="Abrir menú de temas"
-        aria-expanded="false"
-        aria-controls="side-panel"
-      >
-        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
-      </button>
-      <a class="top-bar__brand-link" href="index.html">
-        <img
-          class="brand__logo"
-          src="favicon.svg"
-          alt=""
-          width="28"
-          height="28"
-          aria-hidden="true"
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Programación de Base de Datos SQL · Oracle Academy</title>
+        <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+        <meta
+            name="description"
+            content="Índice completo del curso Programación de Base de Datos SQL de Oracle Academy (DPSQL 47–50): temas, lecciones, prácticas y recursos para leer o descargar."
         />
-        <span class="brand__text">Oracle Academy · DPSQL 47–50</span>
-      </a>
-      <div class="top-bar__search">
-        <label class="sr-only" for="search-input">Buscar en el curso</label>
-        <div class="search__control">
-          <span class="search__icon material-symbols-outlined" aria-hidden="true">search</span>
-          <input
-            id="search-input"
-            class="search__input"
-            type="search"
-            placeholder="Buscar lección, práctica o tema…"
-            autocomplete="off"
-          />
-          <kbd class="search__key" id="search-key" aria-hidden="true">Ctrl K</kbd>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="tokens.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="css/layout.css" />
+        <link rel="stylesheet" href="css/components.css" />
+        <link rel="stylesheet" href="css/pages/catalog.css" />
+    </head>
+    <body>
+        <a class="skip-link" href="#content">Saltar al contenido</a>
+
+        <header class="top-bar">
+            <button
+                class="menu-button"
+                id="menu-button"
+                type="button"
+                aria-label="Abrir menú de temas"
+                aria-expanded="false"
+                aria-controls="side-panel"
+            >
+                <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+            </button>
+            <a class="top-bar__brand-link" href="index.html">
+                <img
+                    class="brand__logo"
+                    src="favicon.svg"
+                    alt=""
+                    width="28"
+                    height="28"
+                    aria-hidden="true"
+                />
+                <span class="brand__text">Oracle Academy · DPSQL 47–50</span>
+            </a>
+            <div class="top-bar__search">
+                <label class="sr-only" for="search-input">Buscar en el curso</label>
+                <div class="search__control">
+                    <span class="search__icon material-symbols-outlined" aria-hidden="true"
+                        >search</span
+                    >
+                    <input
+                        id="search-input"
+                        class="search__input"
+                        type="search"
+                        placeholder="Buscar lección, práctica o tema…"
+                        autocomplete="off"
+                    />
+                    <kbd class="search__key" id="search-key" aria-hidden="true">Ctrl K</kbd>
+                </div>
+            </div>
+        </header>
+
+        <div class="app-shell">
+            <aside class="side-panel" id="side-panel" aria-label="Temas del curso">
+                <p class="side-panel__header eyebrow">Temario</p>
+                <nav class="side-panel__nav" id="panel-nav" aria-label="Navegación por temas"></nav>
+            </aside>
+            <div class="side-panel__backdrop" id="panel-backdrop" hidden></div>
+
+            <main class="content" id="content">
+                <div id="view-container"></div>
+
+                <footer class="colophon">
+                    <p>oracle-academy-dpsql</p>
+                    <p>jeironpro · 2026</p>
+                </footer>
+            </main>
         </div>
-      </div>
-    </header>
 
-    <div class="app-shell">
-      <aside class="side-panel" id="side-panel" aria-label="Temas del curso">
-        <p class="side-panel__header eyebrow">Temario</p>
-        <nav class="side-panel__nav" id="panel-nav" aria-label="Navegación por temas"></nav>
-      </aside>
-      <div class="side-panel__backdrop" id="panel-backdrop" hidden></div>
-
-      <main class="content" id="content">
-        <div id="view-container"></div>
-
-        <footer class="colophon">
-          <p>oracle-academy-dpsql</p>
-          <p>jeironpro · 2026</p>
-        </footer>
-      </main>
-    </div>
-
-    <script type="module" src="js/app.js"></script>
-  </body>
+        <script type="module" src="js/app.js"></script>
+    </body>
 </html>

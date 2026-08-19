@@ -1,21 +1,21 @@
 {
-  "name": "oracle-academy-dpsql",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Sitio web estático con el contenido del curso Programación de Base de Datos SQL (Oracle Academy).",
-  "type": "module",
-  "scripts": {
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "test": "vitest run",
-    "generate": "node tools/generate-manifest.js"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.0.0",
-    "eslint": "^9.0.0",
-    "globals": "^15.0.0",
-    "prettier": "^3.3.0",
-    "vitest": "^3.0.0"
-  }
+    "name": "oracle-academy-dpsql",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Sitio web estático con el contenido del curso Programación de Base de Datos SQL (Oracle Academy).",
+    "type": "module",
+    "scripts": {
+        "lint": "eslint .",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "test": "vitest run",
+        "generate": "node tools/generate-manifest.js"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.0.0",
+        "eslint": "^9.0.0",
+        "globals": "^15.0.0",
+        "prettier": "^3.3.0",
+        "vitest": "^3.0.0"
+    }
 }
