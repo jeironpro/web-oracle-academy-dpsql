@@ -3,7 +3,7 @@ import globals from "globals";
 
 export default [
   {
-    ignores: ["node_modules/", "oracle_academy/", "data/manifesto.json"],
+    ignores: ["node_modules/", "oracle_academy/", "data/manifest.json"],
   },
   js.configs.recommended,
   {

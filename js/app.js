@@ -1,194 +1,193 @@
-import { cargarManifesto } from "./services/manifesto.js";
-import { renderizarPanel, renderizarVista } from "./modules/catalogo.js";
-import { vaciar } from "./utils/dom.js";
+import { loadManifest } from "./services/manifest.js";
+import { renderSidebar, renderView } from "./modules/catalog.js";
+import { clearNode } from "./utils/dom.js";
 
-const VISTA_TODOS = "todos";
-const RETARDO_BUSQUEDA = 150; // ms de debounce al escribir
+const ALL_VIEW = "all";
+const SEARCH_DELAY = 150; // ms de debounce al escribir
 
-const elementos = {
-  panel: document.querySelector("#panel-navegacion"),
-  contenido: document.querySelector("#vista-contenido"),
-  campoBusqueda: document.querySelector("#campo-busqueda"),
-  teclaBusqueda: document.querySelector("#tecla-busqueda"),
-  botonMenu: document.querySelector("#boton-menu"),
-  panelLateral: document.querySelector("#panel-lateral"),
-  velo: document.querySelector("#panel-velo"),
+const elements = {
+  panelNav: document.querySelector("#panel-nav"),
+  viewContainer: document.querySelector("#view-container"),
+  searchInput: document.querySelector("#search-input"),
+  searchKey: document.querySelector("#search-key"),
+  menuButton: document.querySelector("#menu-button"),
+  sidePanel: document.querySelector("#side-panel"),
+  backdrop: document.querySelector("#panel-backdrop"),
 };
 
-let manifesto = null;
-let temporizadorBusqueda = null;
-const estado = { vista: VISTA_TODOS, consulta: "", tipo: "todos" };
+let manifest = null;
+let searchTimer = null;
+const state = { view: ALL_VIEW, query: "", type: "all" };
 
-async function inicializar() {
+async function init() {
   try {
-    manifesto = await cargarManifesto();
+    manifest = await loadManifest();
   } catch (error) {
-    mostrarError(error.message);
+    showError(error.message);
     return;
   }
 
-  leerVistaDesdeHash();
-  actualizarTitulo();
-  renderizar();
+  readViewFromHash();
+  updateTitle();
+  render();
 
   window.addEventListener("hashchange", () => {
-    leerVistaDesdeHash();
-    actualizarTitulo();
-    renderizar();
+    readViewFromHash();
+    updateTitle();
+    render();
   });
 
   // Atajo de teclado: Ctrl/⌘ + K enfoca la búsqueda desde cualquier lugar.
-  window.addEventListener("keydown", (evento) => {
-    const esAtajo = (evento.ctrlKey || evento.metaKey) && evento.key.toLowerCase() === "k";
-    if (esAtajo) {
-      evento.preventDefault();
-      elementos.campoBusqueda?.focus();
-      elementos.campoBusqueda?.select();
+  window.addEventListener("keydown", (event) => {
+    const isShortcut = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k";
+    if (isShortcut) {
+      event.preventDefault();
+      elements.searchInput?.focus();
+      elements.searchInput?.select();
       return;
     }
-    if (evento.key === "Escape" && panelAbierto()) {
-      cerrarPanel();
+    if (event.key === "Escape" && isPanelOpen()) {
+      closePanel();
     }
   });
 
   // Escape: limpia la consulta si hay texto; si está vacía, suelta el foco.
-  elementos.campoBusqueda?.addEventListener("keydown", (evento) => {
-    if (evento.key !== "Escape") {
+  elements.searchInput?.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
       return;
     }
-    if (evento.target.value !== "") {
-      evento.target.value = "";
-      estado.consulta = "";
-      renderizar();
+    if (event.target.value !== "") {
+      event.target.value = "";
+      state.query = "";
+      render();
     } else {
-      evento.target.blur();
+      event.target.blur();
     }
   });
 
-  elementos.campoBusqueda?.addEventListener("input", (evento) => {
-    estado.consulta = evento.target.value;
-    if (temporizadorBusqueda !== null) {
-      window.clearTimeout(temporizadorBusqueda);
+  elements.searchInput?.addEventListener("input", (event) => {
+    state.query = event.target.value;
+    if (searchTimer !== null) {
+      window.clearTimeout(searchTimer);
     }
-    temporizadorBusqueda = window.setTimeout(renderizar, RETARDO_BUSQUEDA);
+    searchTimer = window.setTimeout(render, SEARCH_DELAY);
   });
 
   // Menú hamburguesa: abrir/cerrar el cajón de temas en móvil.
-  elementos.botonMenu?.addEventListener("click", alternarPanel);
-  elementos.velo?.addEventListener("click", cerrarPanel);
+  elements.menuButton?.addEventListener("click", togglePanel);
+  elements.backdrop?.addEventListener("click", closePanel);
   window.addEventListener("resize", () => {
-    if (!esMovil() && panelAbierto()) {
-      cerrarPanel();
+    if (!isMobile() && isPanelOpen()) {
+      closePanel();
     }
   });
 }
 
-/** true si la pantalla está en el rango móvil (cajón activo). */
-function esMovil() {
-  return window.matchMedia("(max-width: 768px)").matches;
-}
-
-function panelAbierto() {
-  return document.body.classList.contains("panel-abierto");
-}
-
-function alternarPanel() {
-  if (panelAbierto()) {
-    cerrarPanel();
-  } else {
-    abrirPanel();
-  }
-}
-
-function abrirPanel() {
-  document.body.classList.add("panel-abierto");
-  if (elementos.velo !== null) {
-    elementos.velo.hidden = false;
-  }
-  elementos.botonMenu?.setAttribute("aria-expanded", "true");
-  elementos.botonMenu?.setAttribute("aria-label", "Cerrar menú de temas");
-}
-
-function cerrarPanel() {
-  document.body.classList.remove("panel-abierto");
-  if (elementos.velo !== null) {
-    elementos.velo.hidden = true;
-  }
-  elementos.botonMenu?.setAttribute("aria-expanded", "false");
-  elementos.botonMenu?.setAttribute("aria-label", "Abrir menú de temas");
-  elementos.botonMenu?.focus();
-}
-
-/** Etiqueta del atajo según plataforma: ⌘ K en macOS, Ctrl K en el resto. */
-function etiquetarAtajo() {
-  if (elementos.teclaBusqueda === null) {
-    return;
-  }
-  const esMac = /Mac|iPhone|iPad/.test(navigator.platform ?? navigator.userAgent);
-  elementos.teclaBusqueda.textContent = esMac ? "⌘ K" : "Ctrl K";
-}
-
-etiquetarAtajo();
-
-/** Lee la vista desde el hash (#todos o #tema-<id>). */
-function leerVistaDesdeHash() {
+/** Lee la vista desde el hash (#all o #topic-<id>). */
+function readViewFromHash() {
   const hash = window.location.hash.replace(/^#/, "");
-  if (hash === VISTA_TODOS || hash === "") {
-    estado.vista = VISTA_TODOS;
+  if (hash === ALL_VIEW || hash === "") {
+    state.view = ALL_VIEW;
     return;
   }
-  const idTema = hash.replace(/^tema-/, "");
-  if (manifesto?.temas.some((tema) => tema.id === idTema)) {
-    estado.vista = idTema;
+  const topicId = hash.replace(/^topic-/, "");
+  if (manifest?.topics.some((topic) => topic.id === topicId)) {
+    state.view = topicId;
   }
 }
 
 /** Selecciona una vista, actualiza el hash (entrada de historial) y renderiza. */
-function seleccionarVista(vista) {
-  estado.vista = vista;
-  const hash = vista === VISTA_TODOS ? VISTA_TODOS : `tema-${vista}`;
+function selectView(view) {
+  state.view = view;
+  const hash = view === ALL_VIEW ? ALL_VIEW : `topic-${view}`;
   window.location.hash = hash;
-  actualizarTitulo();
-  renderizar();
-  if (esMovil() && panelAbierto()) {
-    cerrarPanel();
+  updateTitle();
+  render();
+  if (isMobile() && isPanelOpen()) {
+    closePanel();
   }
 }
 
-function renderizar() {
-  if (manifesto === null) {
+function render() {
+  if (manifest === null) {
     return;
   }
-  renderizarPanel(elementos.panel, manifesto, estado.vista, seleccionarVista);
-  renderizarVista(elementos.contenido, manifesto, estado);
+  renderSidebar(elements.panelNav, manifest, state.view, selectView);
+  renderView(elements.viewContainer, manifest, state);
 
   // Conexión de los chips de filtro renderizados en la vista.
-  const chips = [...elementos.contenido.querySelectorAll(".chip")];
+  const chips = [...elements.viewContainer.querySelectorAll(".chip")];
   for (const chip of chips) {
     chip.addEventListener("click", () => {
-      estado.tipo = chip.dataset.tipo ?? "todos";
-      renderizar();
+      state.type = chip.dataset.type ?? "all";
+      render();
     });
   }
 }
 
-function actualizarTitulo() {
-  if (manifesto === null) {
+function updateTitle() {
+  if (manifest === null) {
     return;
   }
-  const tema = manifesto.temas.find((item) => item.id === estado.vista);
+  const topic = manifest.topics.find((item) => item.id === state.view);
   document.title =
-    tema === undefined
-      ? `${manifesto.curso.titulo} · Oracle Academy`
-      : `${tema.titulo} · ${manifesto.curso.titulo}`;
+    topic === undefined
+      ? `${manifest.course.title} · Oracle Academy`
+      : `${topic.title} · ${manifest.course.title}`;
 }
 
-function mostrarError(mensaje) {
-  vaciar(elementos.contenido);
-  const parrafo = document.createElement("p");
-  parrafo.className = "error";
-  parrafo.textContent = mensaje;
-  elementos.contenido.append(parrafo);
+function showError(message) {
+  clearNode(elements.viewContainer);
+  const paragraph = document.createElement("p");
+  paragraph.className = "error";
+  paragraph.textContent = message;
+  elements.viewContainer.append(paragraph);
 }
 
-inicializar();
+/** true si la pantalla está en el rango móvil (cajón activo). */
+function isMobile() {
+  return window.matchMedia("(max-width: 768px)").matches;
+}
+
+function isPanelOpen() {
+  return document.body.classList.contains("panel-open");
+}
+
+function togglePanel() {
+  if (isPanelOpen()) {
+    closePanel();
+  } else {
+    openPanel();
+  }
+}
+
+function openPanel() {
+  document.body.classList.add("panel-open");
+  if (elements.backdrop !== null) {
+    elements.backdrop.hidden = false;
+  }
+  elements.menuButton?.setAttribute("aria-expanded", "true");
+  elements.menuButton?.setAttribute("aria-label", "Cerrar menú de temas");
+}
+
+function closePanel() {
+  document.body.classList.remove("panel-open");
+  if (elements.backdrop !== null) {
+    elements.backdrop.hidden = true;
+  }
+  elements.menuButton?.setAttribute("aria-expanded", "false");
+  elements.menuButton?.setAttribute("aria-label", "Abrir menú de temas");
+  elements.menuButton?.focus();
+}
+
+/** Etiqueta del atajo según plataforma: ⌘ K en macOS, Ctrl K en el resto. */
+function labelShortcut() {
+  if (elements.searchKey === null) {
+    return;
+  }
+  const isMac = /Mac|iPhone|iPad/.test(navigator.platform ?? navigator.userAgent);
+  elements.searchKey.textContent = isMac ? "⌘ K" : "Ctrl K";
+}
+
+labelShortcut();
+init();

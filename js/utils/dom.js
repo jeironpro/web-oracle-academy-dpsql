@@ -8,29 +8,29 @@
 /**
  * Crea un elemento con clase, texto, atributos y atributos ARIA.
  * @param {string} tag Etiqueta del elemento.
- * @param {{clase?: string, texto?: string, atributos?: Record<string, string>, aria?: Record<string, string>}} opciones
+ * @param {{className?: string, text?: string, attributes?: Record<string, string>, aria?: Record<string, string>}} options
  * @returns {HTMLElement}
  */
-export function crearElemento(tag, { clase = "", texto = "", atributos = {}, aria = {} } = {}) {
-  const elemento = document.createElement(tag);
-  if (clase !== "") {
-    elemento.className = clase;
+export function createElement(tag, { className = "", text = "", attributes = {}, aria = {} } = {}) {
+  const element = document.createElement(tag);
+  if (className !== "") {
+    element.className = className;
   }
-  if (texto !== "") {
-    elemento.textContent = texto;
+  if (text !== "") {
+    element.textContent = text;
   }
-  for (const [nombre, valor] of Object.entries(atributos)) {
-    elemento.setAttribute(nombre, valor);
+  for (const [name, value] of Object.entries(attributes)) {
+    element.setAttribute(name, value);
   }
-  for (const [nombre, valor] of Object.entries(aria)) {
-    elemento.setAttribute(`aria-${nombre}`, valor);
+  for (const [name, value] of Object.entries(aria)) {
+    element.setAttribute(`aria-${name}`, value);
   }
-  return elemento;
+  return element;
 }
 
 /** Elimina todos los hijos de un nodo. */
-export function vaciar(nodo) {
-  while (nodo.firstChild !== null) {
-    nodo.removeChild(nodo.firstChild);
+export function clearNode(node) {
+  while (node.firstChild !== null) {
+    node.removeChild(node.firstChild);
   }
 }

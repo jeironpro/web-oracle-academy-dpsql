@@ -61,16 +61,16 @@ etiquetas). Iconografía: Material Symbols.
 │   ├── layout.css          # Shell de aplicación: barra, panel lateral, contenido
 │   ├── components.css      # Botones, búsqueda, chips, tarjetas
 │   └── pages/
-│       ├── catalogo.css
-│       └── visor.css
+│       ├── catalog.css
+│       └── viewer.css
 ├── js/
 │   ├── app.js              # Entrada del catálogo (enrutado por hash)
 │   ├── visor.js            # Entrada del visor
-│   ├── modules/            # catalogo.js, busqueda.js, visor.js
-│   ├── services/           # manifesto.js (carga y consulta del manifiesto)
+│   ├── modules/            # catalog.js, search.js, viewer.js
+│   ├── services/           # manifest.js (carga y consulta del manifiesto)
 │   └── utils/              # dom.js, format.js
-├── data/manifesto.json     # Manifiesto generado del contenido (fuente de la UI)
-├── tools/generar-manifesto.js  # Genera data/manifesto.json desde oracle_academy/
+├── data/manifest.json     # Manifiesto generado del contenido (fuente de la UI)
+├── tools/generate-manifest.js  # Genera data/manifest.json desde oracle_academy/
 ├── tests/                  # Tests (vitest)
 ├── docs/style-guide.md     # Libro de estilo
 └── oracle_academy/         # Contenido del curso (PDF, DOCX, ZIP)
@@ -80,7 +80,7 @@ etiquetas). Iconografía: Material Symbols.
 
 ```bash
 npm install        # dependencias de desarrollo (lint, test)
-npm run generate   # regenera data/manifesto.json tras añadir contenido
+npm run generate   # regenera data/manifest.json tras añadir contenido
 npm run lint       # eslint
 npm run format     # prettier (escritura)
 npm test           # vitest

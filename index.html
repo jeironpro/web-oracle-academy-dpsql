@@ -19,60 +19,60 @@
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/pages/catalogo.css" />
+    <link rel="stylesheet" href="css/pages/catalog.css" />
   </head>
   <body>
-    <a class="enlace-salto" href="#contenido">Saltar al contenido</a>
+    <a class="skip-link" href="#content">Saltar al contenido</a>
 
-    <header class="barra-superior">
+    <header class="top-bar">
       <button
-        class="boton-menu"
-        id="boton-menu"
+        class="menu-button"
+        id="menu-button"
         type="button"
         aria-label="Abrir menú de temas"
         aria-expanded="false"
-        aria-controls="panel-lateral"
+        aria-controls="side-panel"
       >
         <span class="material-symbols-outlined" aria-hidden="true">menu</span>
       </button>
-      <a class="barra-superior__marca-enlace" href="index.html">
+      <a class="top-bar__brand-link" href="index.html">
         <img
-          class="marca__logo"
+          class="brand__logo"
           src="favicon.svg"
           alt=""
           width="28"
           height="28"
           aria-hidden="true"
         />
-        <span class="marca__texto">Oracle Academy · DPSQL 47–50</span>
+        <span class="brand__text">Oracle Academy · DPSQL 47–50</span>
       </a>
-      <div class="barra-superior__busqueda">
-        <label class="sr-only" for="campo-busqueda">Buscar en el curso</label>
-        <div class="busqueda__control">
-          <span class="busqueda__icono material-symbols-outlined" aria-hidden="true">search</span>
+      <div class="top-bar__search">
+        <label class="sr-only" for="search-input">Buscar en el curso</label>
+        <div class="search__control">
+          <span class="search__icon material-symbols-outlined" aria-hidden="true">search</span>
           <input
-            id="campo-busqueda"
-            class="busqueda__input"
+            id="search-input"
+            class="search__input"
             type="search"
             placeholder="Buscar lección, práctica o tema…"
             autocomplete="off"
           />
-          <kbd class="busqueda__tecla" id="tecla-busqueda" aria-hidden="true">Ctrl K</kbd>
+          <kbd class="search__key" id="search-key" aria-hidden="true">Ctrl K</kbd>
         </div>
       </div>
     </header>
 
-    <div class="aplicacion">
-      <aside class="panel" id="panel-lateral" aria-label="Temas del curso">
-        <p class="panel__cabecera eyebrow">Temario</p>
-        <nav class="panel__nav" id="panel-navegacion" aria-label="Navegación por temas"></nav>
+    <div class="app-shell">
+      <aside class="side-panel" id="side-panel" aria-label="Temas del curso">
+        <p class="side-panel__header eyebrow">Temario</p>
+        <nav class="side-panel__nav" id="panel-nav" aria-label="Navegación por temas"></nav>
       </aside>
-      <div class="panel__velo" id="panel-velo" hidden></div>
+      <div class="side-panel__backdrop" id="panel-backdrop" hidden></div>
 
-      <main class="contenido" id="contenido">
-        <div id="vista-contenido"></div>
+      <main class="content" id="content">
+        <div id="view-container"></div>
 
-        <footer class="colofon">
+        <footer class="colophon">
           <p>oracle-academy-dpsql</p>
           <p>jeironpro · 2026</p>
         </footer>

@@ -8,7 +8,7 @@ repos:
         exclude: ^oracle_academy/
       - id: check-yaml
       - id: check-json
-        exclude: ^data/manifesto\.json$
+        exclude: ^data/manifest.json$
       - id: check-merge-conflict
       - id: check-added-large-files
         # El repositorio contiene PDFs del curso de hasta ~20 MB
@@ -21,7 +21,7 @@ repos:
         entry: npx prettier --write
         language: system
         files: \.(html|css|js|json|md)$
-        exclude: ^oracle_academy/|^data/manifesto\.json$|^package-lock\.json$
+        exclude: ^oracle_academy/|^data/manifest.json$|^package-lock\.json$
       - id: eslint
         name: eslint
         entry: npx eslint --fix

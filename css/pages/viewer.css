@@ -1,5 +1,5 @@
 /* Barra superior del visor: volver + migas a la izquierda, descarga a la derecha. */
-.visor-barra {
+.viewer-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -10,7 +10,7 @@
   background: var(--color-paper-2);
 }
 
-.visor-barra__izquierda {
+.viewer-bar__left {
   display: flex;
   align-items: center;
   gap: var(--space-md);
@@ -19,11 +19,11 @@
   flex-wrap: wrap;
 }
 
-.visor-barra__volver {
+.viewer-bar__back {
   flex-shrink: 0;
 }
 
-.visor-barra__migas {
+.viewer-bar__crumbs {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
@@ -33,37 +33,37 @@
   flex: 1;
 }
 
-.visor-barra__enlace {
+.viewer-bar__crumb-link {
   color: var(--color-muted);
   text-decoration: none;
   overflow-wrap: anywhere;
 }
 
-.visor-barra__enlace:hover {
+.viewer-bar__crumb-link:hover {
   color: var(--color-accent-2-deep);
 }
 
-.visor-barra__separador {
+.viewer-bar__separator {
   color: var(--color-neutral);
 }
 
-.visor-barra__actual {
+.viewer-bar__current {
   color: var(--color-ink);
   overflow-wrap: anywhere;
 }
 
-.visor-barra__acciones {
+.viewer-bar__actions {
   flex-shrink: 0;
 }
 
 /* Encabezado del documento. */
-.visor {
+.viewer {
   max-width: var(--measure);
   margin-inline: auto;
   padding: var(--space-xl) var(--space-lg) 0;
 }
 
-.visor__etiqueta {
+.viewer__label {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: 500;
@@ -72,12 +72,12 @@
   color: var(--color-muted);
 }
 
-.visor__titulo {
+.viewer__title {
   font-size: var(--text-2xl);
   margin-top: var(--space-2xs);
 }
 
-.visor__meta {
+.viewer__meta {
   margin-top: var(--space-xs);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -86,7 +86,7 @@
 }
 
 /* Marco del PDF: ocupa el resto de la altura de la ventana. */
-.visor__marco {
+.viewer__frame {
   position: relative;
   margin-top: var(--space-lg);
   height: calc(100vh - 300px);
@@ -98,18 +98,18 @@
   box-shadow: var(--shadow-card);
 }
 
-.visor__pdf {
+.viewer__pdf {
   width: 100%;
   height: 100%;
   border: 0;
   display: block;
 }
 
-.visor__fallo[hidden] {
+.viewer__fallback[hidden] {
   display: none;
 }
 
-.visor__fallo {
+.viewer__fallback {
   position: absolute;
   inset: 0;
   display: flex;
@@ -122,17 +122,17 @@
   background: var(--color-paper-2);
 }
 
-.visor__fallo-titulo {
+.viewer__fallback-title {
   font-size: var(--text-lg);
 }
 
-.visor__fallo-texto {
+.viewer__fallback-text {
   max-width: 45ch;
   color: var(--color-muted);
   font-size: var(--text-sm);
 }
 
-.visor__noscript {
+.viewer__noscript {
   padding: var(--space-lg);
   color: var(--color-warning);
   font-family: var(--font-mono);
@@ -140,7 +140,7 @@
 }
 
 /* Pie: navegación anterior/siguiente dentro del tema. */
-.visor-pie {
+.viewer-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -150,11 +150,11 @@
   padding-inline: var(--space-lg);
 }
 
-.visor-pie__enlace[hidden] {
+.viewer-footer__link[hidden] {
   display: none;
 }
 
-.visor-pie__enlace {
+.viewer-footer__link {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
@@ -167,12 +167,12 @@
   transition: background var(--dur-fast) var(--ease-out);
 }
 
-.visor-pie__enlace:hover {
+.viewer-footer__link:hover {
   background: var(--color-paper-2);
   color: var(--color-ink);
 }
 
-.visor-pie__posicion {
+.viewer-footer__position {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--color-muted);
@@ -180,11 +180,11 @@
 }
 
 @media (max-width: 480px) {
-  .visor-barra {
+  .viewer-bar {
     padding-inline: var(--space-md);
   }
 
-  .visor__marco {
+  .viewer__frame {
     height: calc(100vh - 340px);
   }
 }
