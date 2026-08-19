@@ -60,7 +60,9 @@ Tres familias, todas redondeadas o técnicas; **no hay serif**:
 - Escala de 4 pt con nombres semánticos (`--space-2xs` … `--space-4xl`).
 - Shell de aplicación: barra superior (64 px) + panel izquierdo (280 px) +
   contenido; cada columna con scroll propio, `calc(100vh - barra)`.
-- Móvil (< 768 px): el panel colapsa a una franja horizontal desplazable.
+- Móvil (< 768 px): el panel se convierte en un cajón deslizante (300 px) que
+  se abre con el menú hamburguesa y se cierra con Escape, clic en el velo o al
+  elegir un tema.
 - Radios: tarjetas 20 px, píldoras 999 px, inputs 12 px (Hum es redondo).
 
 ## Componentes base
@@ -77,8 +79,10 @@ el borde cae a 1 px (la presión es la respuesta). Variantes `--soft` y
 
 Tarjeta con chip de icono coloreado por tipo (PDF cian, DOCX pera, ZIP
 mint), tinte de fondo al 8–14 %, elevación al hover (`translateY(-4px)` +
-sombra mayor + tinte que profundiza). Acción explícita «Descargar»;
-archivos externos LFS muestran insignia lavanda y enlace a GitHub.
+sombra mayor + tinte que profundiza). Acción explícita «Descargar» en
+cada tarjeta; los archivos grandes (Git LFS) se descargan desde la URL
+`raw` de GitHub. En la vista de tema, el menú `jump` permite saltar a
+cualquier lección o práctica y resalta su tarjeta.
 
 ### Chips de filtro
 
@@ -95,8 +99,9 @@ no enlaces simulados.
 
 - **Material Symbols** (Google), estilo _Outlined_, como estándar de
   dicresoft. Sin emojis en la UI ni en el código.
-- Iconos usados: `search`, `download`, `open_in_new`, `description`,
-  `folder_zip`, `chevron_left`, `chevron_right`.
+- Iconos usados: `search`, `download`, `description`, `folder_zip`,
+  `insert_drive_file`, `chevron_left`, `chevron_right`, `menu`, `menu_book`,
+  `expand_more`, `arrow_back`.
 
 ## Movimiento
 

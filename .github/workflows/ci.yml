@@ -70,4 +70,4 @@ jobs:
       - run: npm ci
       # El "build" de un sitio estático es verificar que el manifiesto está al día
       - name: Verificar manifiesto de contenido
-        run: node tools/generar-manifesto.js --check
+        run: node tools/generate-manifest.js --check

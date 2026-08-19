@@ -98,7 +98,7 @@ a:hover {
 }
 
 /* Enlace de salto al contenido (accesibilidad). */
-.enlace-salto {
+.skip-link {
   position: absolute;
   top: -100%;
   left: var(--space-md);
@@ -110,7 +110,7 @@ a:hover {
   text-decoration: none;
 }
 
-.enlace-salto:focus-visible {
+.skip-link:focus-visible {
   top: var(--space-md);
 }
 

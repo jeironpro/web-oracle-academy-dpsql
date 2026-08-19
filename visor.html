@@ -18,67 +18,67 @@
     <link rel="stylesheet" href="tokens.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/pages/visor.css" />
+    <link rel="stylesheet" href="css/pages/viewer.css" />
   </head>
   <body>
-    <a class="enlace-salto" href="#visor-documento">Saltar al visor</a>
+    <a class="skip-link" href="#viewer-document">Saltar al visor</a>
 
-    <header class="visor-barra">
-      <div class="visor-barra__izquierda">
-        <a class="btn btn--soft btn--sm visor-barra__volver" href="index.html">
+    <header class="viewer-bar">
+      <div class="viewer-bar__left">
+        <a class="btn btn--soft btn--sm viewer-bar__back" href="index.html">
           <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
           <span>Volver al índice</span>
         </a>
-        <nav class="visor-barra__migas" aria-label="Migas de pan">
-          <a class="visor-barra__enlace" href="index.html">Índice</a>
-          <span class="visor-barra__separador" aria-hidden="true">/</span>
-          <a class="visor-barra__enlace" id="miga-tema" href="index.html">Tema</a>
-          <span class="visor-barra__separador" aria-hidden="true">/</span>
-          <span class="visor-barra__actual" id="miga-archivo" aria-current="page">Documento</span>
+        <nav class="viewer-bar__crumbs" aria-label="Migas de pan">
+          <a class="viewer-bar__crumb-link" href="index.html">Índice</a>
+          <span class="viewer-bar__separator" aria-hidden="true">/</span>
+          <a class="viewer-bar__crumb-link" id="crumb-topic" href="index.html">Tema</a>
+          <span class="viewer-bar__separator" aria-hidden="true">/</span>
+          <span class="viewer-bar__current" id="crumb-file" aria-current="page">Documento</span>
         </nav>
       </div>
-      <div class="visor-barra__acciones">
-        <a class="btn btn--cyan" id="enlace-descarga" href="index.html" download>
+      <div class="viewer-bar__actions">
+        <a class="btn btn--cyan" id="download-link" href="index.html" download>
           <span class="material-symbols-outlined" aria-hidden="true">download</span>
           <span>Descargar</span>
         </a>
       </div>
     </header>
 
-    <main class="visor" id="visor-documento">
-      <div class="visor__encabezado">
-        <p class="visor__etiqueta" id="etiqueta-archivo">Documento</p>
-        <h1 class="visor__titulo" id="titulo-archivo">Cargando…</h1>
-        <p class="visor__meta" id="meta-archivo"></p>
+    <main class="viewer" id="viewer-document">
+      <div class="viewer__header">
+        <p class="viewer__label" id="file-label">Documento</p>
+        <h1 class="viewer__title" id="file-title">Cargando…</h1>
+        <p class="viewer__meta" id="file-meta"></p>
       </div>
 
-      <div class="visor__marco">
+      <div class="viewer__frame">
         <iframe
-          class="visor__pdf"
-          id="visor-pdf"
+          class="viewer__pdf"
+          id="pdf-frame"
           title="Vista previa del documento"
           aria-label="Vista previa del documento PDF"
         ></iframe>
-        <div class="visor__fallo" id="visor-fallo" hidden>
-          <p class="visor__fallo-titulo">No se pudo previsualizar el documento</p>
-          <p class="visor__fallo-texto">
+        <div class="viewer__fallback" id="viewer-fallback" hidden>
+          <p class="viewer__fallback-title">No se pudo previsualizar el documento</p>
+          <p class="viewer__fallback-text">
             El PDF puede estar protegido o el navegador no permite su vista previa. Puedes
             descargarlo desde el botón superior.
           </p>
         </div>
         <noscript>
-          <p class="visor__noscript">Activa JavaScript para ver el documento en el navegador.</p>
+          <p class="viewer__noscript">Activa JavaScript para ver el documento en el navegador.</p>
         </noscript>
       </div>
     </main>
 
-    <footer class="visor-pie" aria-label="Navegación entre documentos del tema">
-      <a class="visor-pie__enlace" id="enlace-anterior" href="index.html" hidden>
+    <footer class="viewer-footer" aria-label="Navegación entre documentos del tema">
+      <a class="viewer-footer__link" id="prev-link" href="index.html" hidden>
         <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
         <span>Anterior</span>
       </a>
-      <p class="visor-pie__posicion" id="posicion-documento"></p>
-      <a class="visor-pie__enlace" id="enlace-siguiente" href="index.html" hidden>
+      <p class="viewer-footer__position" id="doc-position"></p>
+      <a class="viewer-footer__link" id="next-link" href="index.html" hidden>
         <span>Siguiente</span>
         <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
       </a>

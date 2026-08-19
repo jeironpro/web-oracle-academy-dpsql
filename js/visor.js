@@ -1,112 +1,112 @@
-import { cargarManifesto, urlDeArchivo, urlDeVisor } from "./services/manifesto.js";
-import { construirPaginacion, encontrarArchivo } from "./modules/visor.js";
-import { formatearTamano, tipoLegible } from "./utils/format.js";
+import { loadManifest, fileUrl, viewerUrl } from "./services/manifest.js";
+import { buildPagination, findFile } from "./modules/viewer.js";
+import { formatSize, readableType } from "./utils/format.js";
 
-const TIPO_VISIBLE = "pdf";
+const VISIBLE_TYPE = "pdf";
 
-const elementos = {
-  visorPdf: document.querySelector("#visor-pdf"),
-  visorFallo: document.querySelector("#visor-fallo"),
-  etiqueta: document.querySelector("#etiqueta-archivo"),
-  titulo: document.querySelector("#titulo-archivo"),
-  meta: document.querySelector("#meta-archivo"),
-  descarga: document.querySelector("#enlace-descarga"),
-  migaTema: document.querySelector("#miga-tema"),
-  migaArchivo: document.querySelector("#miga-archivo"),
-  anterior: document.querySelector("#enlace-anterior"),
-  siguiente: document.querySelector("#enlace-siguiente"),
-  posicion: document.querySelector("#posicion-documento"),
+const elements = {
+  pdfFrame: document.querySelector("#pdf-frame"),
+  fallback: document.querySelector("#viewer-fallback"),
+  fileLabel: document.querySelector("#file-label"),
+  fileTitle: document.querySelector("#file-title"),
+  fileMeta: document.querySelector("#file-meta"),
+  downloadLink: document.querySelector("#download-link"),
+  crumbTopic: document.querySelector("#crumb-topic"),
+  crumbFile: document.querySelector("#crumb-file"),
+  prevLink: document.querySelector("#prev-link"),
+  nextLink: document.querySelector("#next-link"),
+  position: document.querySelector("#doc-position"),
 };
 
-async function inicializar() {
-  const parametros = new URLSearchParams(window.location.search);
-  const rutaArchivo = parametros.get("archivo");
-  const idTema = parametros.get("tema");
+async function init() {
+  const params = new URLSearchParams(window.location.search);
+  const filePath = params.get("file");
+  const topicId = params.get("topic");
 
-  if (rutaArchivo === null || idTema === null) {
-    mostrarSinDocumento("Falta el parámetro del documento en la URL.");
+  if (filePath === null || topicId === null) {
+    showNoDocument("Falta el parámetro del documento en la URL.");
     return;
   }
 
-  let manifesto;
+  let manifest;
   try {
-    manifesto = await cargarManifesto();
+    manifest = await loadManifest();
   } catch (error) {
-    mostrarSinDocumento(error.message);
+    showNoDocument(error.message);
     return;
   }
 
-  const encontrado = encontrarArchivo(manifesto, rutaArchivo);
-  if (encontrado === null) {
-    mostrarSinDocumento("El documento no existe en el curso.");
+  const found = findFile(manifest, filePath);
+  if (found === null) {
+    showNoDocument("El documento no existe en el curso.");
     return;
   }
 
-  const { tema, archivo } = encontrado;
-  const esVisible = archivo.tipo === TIPO_VISIBLE && archivo.externo !== true;
+  const { topic, file } = found;
+  const isViewable = file.type === VISIBLE_TYPE && file.external !== true;
 
-  document.title = `${archivo.titulo} · ${tema.titulo} · Oracle Academy`;
-  if (elementos.etiqueta !== null) {
-    elementos.etiqueta.textContent = `${tema.titulo} · ${tipoLegible(archivo.tipo)}`;
+  document.title = `${file.title} · ${topic.title} · Oracle Academy`;
+  if (elements.fileLabel !== null) {
+    elements.fileLabel.textContent = `${topic.title} · ${readableType(file.type)}`;
   }
-  if (elementos.titulo !== null) {
-    elementos.titulo.textContent = archivo.titulo;
+  if (elements.fileTitle !== null) {
+    elements.fileTitle.textContent = file.title;
   }
-  if (elementos.meta !== null) {
-    elementos.meta.textContent = `${archivo.nombre} · ${tipoLegible(archivo.tipo)} · ${formatearTamano(archivo.tamano)}`;
+  if (elements.fileMeta !== null) {
+    elements.fileMeta.textContent = `${file.name} · ${readableType(file.type)} · ${formatSize(file.size)}`;
   }
-  if (elementos.migaTema !== null) {
-    elementos.migaTema.textContent = tema.titulo;
-    elementos.migaTema.setAttribute("href", `index.html#tema-${tema.id}`);
+  if (elements.crumbTopic !== null) {
+    elements.crumbTopic.textContent = topic.title;
+    elements.crumbTopic.setAttribute("href", `index.html#topic-${topic.id}`);
   }
-  if (elementos.migaArchivo !== null) {
-    elementos.migaArchivo.textContent = archivo.titulo;
+  if (elements.crumbFile !== null) {
+    elements.crumbFile.textContent = file.title;
   }
-  if (elementos.descarga !== null) {
-    elementos.descarga.setAttribute("href", urlDeArchivo(archivo));
-    elementos.descarga.setAttribute("download", archivo.nombre);
-  }
-
-  if (esVisible && elementos.visorPdf !== null) {
-    elementos.visorPdf.setAttribute("src", urlDeArchivo(archivo));
-  } else if (elementos.visorFallo !== null) {
-    elementos.visorFallo.hidden = false;
+  if (elements.downloadLink !== null) {
+    elements.downloadLink.setAttribute("href", fileUrl(file));
+    elements.downloadLink.setAttribute("download", file.name);
   }
 
-  montarPaginacion(tema, archivo);
+  if (isViewable && elements.pdfFrame !== null) {
+    elements.pdfFrame.setAttribute("src", fileUrl(file));
+  } else if (elements.fallback !== null) {
+    elements.fallback.hidden = false;
+  }
+
+  mountPagination(topic, file);
 }
 
-function montarPaginacion(tema, archivoActual) {
-  const { anterior, siguiente, posicion, total } = construirPaginacion(tema, archivoActual);
+function mountPagination(topic, currentFile) {
+  const { prev, next, position, total } = buildPagination(topic, currentFile);
 
-  if (elementos.posicion !== null && posicion !== null) {
-    elementos.posicion.textContent = `${posicion} / ${total}`;
+  if (elements.position !== null && position !== null) {
+    elements.position.textContent = `${position} / ${total}`;
   }
-  if (elementos.anterior !== null && anterior !== null) {
-    elementos.anterior.hidden = false;
-    elementos.anterior.setAttribute("href", urlDeVisor(anterior, tema.id));
-    elementos.anterior.setAttribute("aria-label", `Anterior: ${anterior.titulo}`);
+  if (elements.prevLink !== null && prev !== null) {
+    elements.prevLink.hidden = false;
+    elements.prevLink.setAttribute("href", viewerUrl(prev, topic.id));
+    elements.prevLink.setAttribute("aria-label", `Anterior: ${prev.title}`);
   }
-  if (elementos.siguiente !== null && siguiente !== null) {
-    elementos.siguiente.hidden = false;
-    elementos.siguiente.setAttribute("href", urlDeVisor(siguiente, tema.id));
-    elementos.siguiente.setAttribute("aria-label", `Siguiente: ${siguiente.titulo}`);
-  }
-}
-
-function mostrarSinDocumento(mensaje) {
-  if (elementos.titulo !== null) {
-    elementos.titulo.textContent = "Documento no disponible";
-  }
-  if (elementos.meta !== null) {
-    elementos.meta.textContent = mensaje;
-  }
-  if (elementos.visorFallo !== null) {
-    elementos.visorFallo.hidden = false;
-  }
-  if (elementos.descarga !== null) {
-    elementos.descarga.hidden = true;
+  if (elements.nextLink !== null && next !== null) {
+    elements.nextLink.hidden = false;
+    elements.nextLink.setAttribute("href", viewerUrl(next, topic.id));
+    elements.nextLink.setAttribute("aria-label", `Siguiente: ${next.title}`);
   }
 }
 
-inicializar();
+function showNoDocument(message) {
+  if (elements.fileTitle !== null) {
+    elements.fileTitle.textContent = "Documento no disponible";
+  }
+  if (elements.fileMeta !== null) {
+    elements.fileMeta.textContent = message;
+  }
+  if (elements.fallback !== null) {
+    elements.fallback.hidden = false;
+  }
+  if (elements.downloadLink !== null) {
+    elements.downloadLink.hidden = true;
+  }
+}
+
+init();
