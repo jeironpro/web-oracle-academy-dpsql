@@ -162,6 +162,123 @@
   gap: var(--space-md);
 }
 
+/* Menú para saltar a una lección o práctica dentro del tema. */
+.salto {
+  position: relative;
+}
+
+.salto__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: 1.5px solid var(--color-ink-soft);
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.salto__boton:hover {
+  border-color: var(--color-accent-2-deep);
+  background: var(--color-paper-2);
+}
+
+.salto__boton[aria-expanded="true"] {
+  border-color: var(--color-accent-2-deep);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.salto__icono {
+  font-size: 1.125rem;
+  color: var(--color-accent-2-deep);
+}
+
+.salto__chevron {
+  font-size: 1.125rem;
+  color: var(--color-muted);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.salto__boton[aria-expanded="true"] .salto__chevron {
+  transform: rotate(180deg);
+}
+
+.salto__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 30;
+  min-width: 280px;
+  max-width: min(340px, 85vw);
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: var(--space-2xs);
+  list-style: none;
+  background: var(--color-paper);
+  border: 1.5px solid var(--color-ink-soft);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.salto__menu[hidden] {
+  display: none;
+}
+
+.salto__opcion {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.salto__opcion[aria-selected="true"] {
+  background: var(--color-accent);
+}
+
+.salto__opcion-titulo {
+  font-size: var(--text-sm);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.salto__opcion-tipo {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.salto__opcion-tipo--pdf {
+  color: var(--color-accent-2-deep);
+}
+
+.salto__opcion-tipo--docx {
+  color: var(--color-accent-deep);
+}
+
+/* Tarjeta resaltada brevemente al saltar desde el menú. */
+.tarjeta--resaltada {
+  outline: 3px solid var(--color-accent-2);
+  outline-offset: 2px;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
 /* Estado vacío. */
 .vacio {
   margin-top: var(--space-xl);

@@ -94,6 +94,10 @@ function renderizarTema(tema, estado) {
   cabecera.append(etiqueta, fila, conteo);
 
   const herramientas = crearElemento("div", { clase: "vista-tema__herramientas" });
+  const opcionesSalto = opcionesDeSalto(archivos);
+  if (opcionesSalto.length > 0) {
+    herramientas.append(renderizarSalto(opcionesSalto, tema.id));
+  }
   herramientas.append(renderizarFiltros(estado.tipo));
   const contador = crearElemento("p", {
     clase: "vista-tema__contador",
@@ -109,6 +113,182 @@ function renderizarTema(tema, estado) {
       : renderizarVacio("Sin resultados", "Ningún archivo coincide con la búsqueda o el filtro."),
   );
   return vista;
+}
+
+/**
+ * Opciones del menú de salto: lecciones y prácticas (PDF y DOCX, no externos)
+ * con su índice en la grilla, para poder desplazarse hasta su tarjeta.
+ * @param {object[]} archivos Archivos ya filtrados de la vista.
+ * @returns {{ archivo: object, indice: number }[]}
+ */
+export function opcionesDeSalto(archivos) {
+  const opciones = [];
+  archivos.forEach((archivo, indice) => {
+    if ((archivo.tipo === "pdf" || archivo.tipo === "docx") && archivo.externo !== true) {
+      opciones.push({ archivo, indice });
+    }
+  });
+  return opciones;
+}
+
+/**
+ * Menú desplegable para saltar a una lección o práctica del tema.
+ * Listbox accesible: flechas, Inicio/Fin, Enter, Escape, clic fuera para cerrar.
+ */
+function renderizarSalto(opciones, idTema) {
+  const control = crearElemento("div", { clase: "salto" });
+  const boton = crearElemento("button", {
+    clase: "salto__boton",
+    atributos: { type: "button", "aria-haspopup": "listbox", "aria-expanded": "false" },
+  });
+  boton.append(
+    crearElemento("span", {
+      clase: "material-symbols-outlined salto__icono",
+      texto: "menu_book",
+      aria: { hidden: "true" },
+    }),
+    crearElemento("span", { texto: "Ir a lección o práctica" }),
+    crearElemento("span", {
+      clase: "material-symbols-outlined salto__chevron",
+      texto: "expand_more",
+      aria: { hidden: "true" },
+    }),
+  );
+
+  const menu = crearElemento("ul", {
+    clase: "salto__menu",
+    atributos: { role: "listbox", "aria-label": "Lecciones y prácticas del tema", hidden: "" },
+  });
+  const elementosOpcion = [];
+  opciones.forEach(({ archivo }, indice) => {
+    const opcion = crearElemento("li", {
+      clase: "salto__opcion",
+      atributos: {
+        role: "option",
+        id: `salto-opcion-${idTema}-${indice}`,
+        "data-indice": String(indice),
+        "aria-selected": "false",
+      },
+    });
+    opcion.append(
+      crearElemento("span", { clase: "salto__opcion-titulo", texto: archivo.titulo }),
+      crearElemento("span", {
+        clase: `salto__opcion-tipo salto__opcion-tipo--${archivo.tipo}`,
+        texto: archivo.tipo.toUpperCase(),
+      }),
+    );
+    elementosOpcion.push(opcion);
+    menu.append(opcion);
+  });
+  control.append(boton, menu);
+
+  let abierto = false;
+  let activo = 0;
+
+  function marcar(indice) {
+    activo = (indice + elementosOpcion.length) % elementosOpcion.length;
+    elementosOpcion.forEach((opcion, i) => {
+      opcion.setAttribute("aria-selected", String(i === activo));
+    });
+    menu.setAttribute("aria-activedescendant", elementosOpcion[activo].id);
+    elementosOpcion[activo].scrollIntoView({ block: "nearest" });
+  }
+
+  function abrir() {
+    abierto = true;
+    boton.setAttribute("aria-expanded", "true");
+    menu.hidden = false;
+    marcar(activo);
+  }
+
+  function cerrar(devolverFoco = true) {
+    if (!abierto) {
+      return;
+    }
+    abierto = false;
+    boton.setAttribute("aria-expanded", "false");
+    menu.hidden = true;
+    menu.removeAttribute("aria-activedescendant");
+    if (devolverFoco) {
+      boton.focus();
+    }
+  }
+
+  function seleccionar(indice) {
+    const destino = document.getElementById(`archivo-${idTema}-${indice}`);
+    cerrar();
+    if (destino === null) {
+      return;
+    }
+    destino.scrollIntoView({ behavior: "smooth", block: "center" });
+    destino.classList.add("tarjeta--resaltada");
+    window.setTimeout(() => destino.classList.remove("tarjeta--resaltada"), 1800);
+  }
+
+  boton.addEventListener("click", () => {
+    if (abierto) {
+      cerrar();
+    } else {
+      abrir();
+    }
+  });
+
+  boton.addEventListener("keydown", (evento) => {
+    if (evento.key === "ArrowDown") {
+      evento.preventDefault();
+      abrir();
+    } else if (evento.key === "Escape") {
+      cerrar(false);
+    }
+  });
+
+  menu.addEventListener("keydown", (evento) => {
+    switch (evento.key) {
+      case "ArrowDown":
+        evento.preventDefault();
+        marcar(activo + 1);
+        break;
+      case "ArrowUp":
+        evento.preventDefault();
+        marcar(activo - 1);
+        break;
+      case "Home":
+        evento.preventDefault();
+        marcar(0);
+        break;
+      case "End":
+        evento.preventDefault();
+        marcar(elementosOpcion.length - 1);
+        break;
+      case "Enter":
+        evento.preventDefault();
+        seleccionar(activo);
+        break;
+      case "Escape":
+        cerrar();
+        break;
+      case "Tab":
+        cerrar(false);
+        break;
+      default:
+        break;
+    }
+  });
+
+  menu.addEventListener("click", (evento) => {
+    const opcion = evento.target.closest(".salto__opcion");
+    if (opcion !== null) {
+      seleccionar(Number(opcion.dataset.indice));
+    }
+  });
+
+  document.addEventListener("click", (evento) => {
+    if (abierto && !control.contains(evento.target)) {
+      cerrar(false);
+    }
+  });
+
+  return control;
 }
 
 function renderizarTodos(manifesto, estado) {
@@ -188,18 +368,19 @@ function renderizarFiltros(tipoActivo) {
   return contenedor;
 }
 
-/** Grilla de tarjetas de archivo. */
+/** Grilla de tarjetas de archivo (con id por índice para el salto). */
 function renderizarGrilla(archivos, idTema) {
   const grilla = crearElemento("div", { clase: "grilla" });
-  for (const archivo of archivos) {
-    grilla.append(renderizarTarjeta(archivo, idTema));
-  }
+  archivos.forEach((archivo, indice) => {
+    grilla.append(renderizarTarjeta(archivo, idTema, indice));
+  });
   return grilla;
 }
 
-function renderizarTarjeta(archivo, idTema) {
+function renderizarTarjeta(archivo, idTema, indice) {
   const tarjeta = crearElemento("article", {
     clase: `tarjeta ${CLASES_TARJETA[archivo.tipo] ?? "tarjeta--pdf"}`,
+    atributos: { id: `archivo-${idTema}-${indice}` },
   });
   const esExterno = archivo.externo === true;
   const esVisible = archivo.tipo === "pdf" && !esExterno;
